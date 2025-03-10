@@ -113,7 +113,7 @@ section .title::after {
 /*  Navbar  */
 .navbar {
   position: fixed;
-  width: 120%;
+  width: 100%;
   z-index: 999;
   padding: 30px 0;
   font-family: "Ubuntu", sans-serif;
@@ -132,7 +132,7 @@ section .title::after {
 }
 
 .navbar .logo a {
-  margin-left: -170px;
+  margin-left: 0;
   color: #fff;
   font-size: 35px;
   font-weight: 600;
@@ -258,7 +258,7 @@ section .title::after {
   color: #fff;
   min-height: 500px;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -1094,7 +1094,7 @@ section .title::after {
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
-  width: 130%;
+  width: 100%;
 }
 
 /* Left Side (Image) */
