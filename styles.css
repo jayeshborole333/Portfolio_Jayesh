@@ -416,7 +416,7 @@ section .title::after {
   }
 }
 
-/*About*/
+/* About Section */
 .about {
   background: #f8f9fa;
   padding: 60px 0;
@@ -451,51 +451,38 @@ section .title::after {
   width: 350px;
   height: 350px;
   object-fit: cover;
-  border-radius: 40%;
+  border-radius: 50%;
   border: 5px solid #1e3551;
   transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   animation: floating 5s infinite ease-in-out, soft-glow 3s infinite alternate;
 }
 
-/* Ultra Luxury Floating Effect */
+/* Floating Animation */
 @keyframes floating {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-/* Premium Soft Glow Effect (Golden + White Shine) */
+/* Glow Effect */
 @keyframes soft-glow {
-  0% {
-    box-shadow: 0 0 15px rgba(255, 223, 186, 0.6), 0 0 30px rgba(255, 223, 186, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 25px rgba(255, 236, 179, 0.8), 0 0 35px rgba(255, 236, 179, 0.6);
-  }
+  0% { box-shadow: 0 0 15px rgba(255, 223, 186, 0.6), 0 0 30px rgba(255, 223, 186, 0.4); }
+  100% { box-shadow: 0 0 25px rgba(255, 236, 179, 0.8), 0 0 35px rgba(255, 236, 179, 0.6); }
 }
 
-/* Hover Effect - Depth Effect */
+/* Hover Effect */
 .left-1 img:hover {
   transform: scale(1.1);
   animation: depth-effect 1.5s infinite alternate;
 }
 
+/* Depth Effect */
 @keyframes depth-effect {
-  0% {
-    box-shadow: 0 0 20px rgba(240, 240, 240, 0.7), 0 0 40px rgba(255, 255, 255, 0.6);
-  }
-  100% {
-    box-shadow: 0 0 30px rgba(255, 250, 240, 1), 0 0 50px rgba(255, 243, 224, 0.9);
-  }
+  0% { box-shadow: 0 0 20px rgba(240, 240, 240, 0.7), 0 0 40px rgba(255, 255, 255, 0.6); }
+  100% { box-shadow: 0 0 30px rgba(255, 250, 240, 1), 0 0 50px rgba(255, 243, 224, 0.9); }
 }
 
-/* Right Section - About Content */
+/* Right Section */
 .right-1 {
   flex: 1;
   padding-left: 40px;
@@ -512,35 +499,6 @@ section .title::after {
   text-align: justify;
   font-size: 18px;
   color: #333;
-}
-
-/* Fixed Keyframes for Pulse Animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgb(244, 248, 10);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 251, 0, 0.8);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgb(244, 248, 10);
-  }
-}
-
-/* Keyframes for Fade Out Animation */
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none; 
-  }
 }
 
 /* Download CV Button */
@@ -564,148 +522,53 @@ section .title::after {
   box-shadow: 0 0 10px rgba(30, 53, 81, 0.5);
 }
 
-/* Neon Glow Effect */
+/* Button Hover Effect */
 .download-btn:hover {
   box-shadow: 0 0 20px rgba(46, 107, 233, 0.8), 0 0 40px rgba(46, 107, 233, 0.6);
   transform: scale(1.1);
 }
 
-/* Moving Light Effect */
-.download-btn::before {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, rgba(0, 0, 0, 0) 50%);
-  transition: all 0.6s ease-in-out;
-}
-
-/* Move Light Effect on Hover */
-.download-btn:hover::before {
-  top: 0%;
-  left: 0%;
-}
-
-/* Click Effect */
+/* Button Click Effect */
 .download-btn:active {
   transform: scale(0.96);
   box-shadow: 0 0 30px rgba(46, 107, 233, 1);
 }
 
-
-/* About Section */
-.about {
-  background: #f8f9fa;
-  padding: 60px 0;
-}
-
-.max-width {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.about-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.column {
-  flex: 1;
-}
-
-/* Left Section - Profile Image */
-.left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 50%;
-}
-
-.left-1 img {
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid #1e3551;
-  transition: transform 0.3s ease; 
-}
-
-.left-1 img:hover {
-  transform: scale(1.1); 
-}
-
-/* Right Section - About Content */
-.right-1 {
-  flex: 1;
-  padding-left: 40px;
-}
-
-.right-1 .text {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #1e3551;
-}
-
-.right-1 p {
-  text-align: justify;
-  font-size: 18px;
-  color: #333;
-}
-
-/* Responsive Design */
-@media (max-width: 991px) {
+/* Mobile Responsive */
+@media (max-width: 768px) {
   .about-content {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .left, .right {
-      width: 100%;
-      padding: 0;
+  .left {
+    max-width: 100%;
+    padding: 0;
   }
 
-  .left img {
-      width: 250px;
-      height: 250px;
-  }
-}
-
-
-/* Responsive Design */
-@media (max-width: 991px) {
-  .about-content {
-      flex-direction: column;
-      text-align: center;
+  .left-1 img {
+    width: 250px;
+    height: 250px;
   }
 
-  .left, .right {
-      width: 100%;
-      padding: 0;
+  .right-1 {
+    padding-left: 0;
   }
 
-  .left img {
-      width: 250px;
-      height: 250px;
+  .right-1 .text {
+    font-size: 24px;
+  }
+
+  .right-1 p {
+    font-size: 16px;
   }
 }
 
-/*Animation*/
+/* Animation */
 @keyframes pulse {
-0% {
-  transform: scale(1);
-}
-50% {
-  transform: scale(1.1);
-}
-100% {
-  transform: scale(1);
-}
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /*  Service  */
@@ -780,7 +643,7 @@ section .title::after {
   margin: 10px 0 7px 0;
 }
 
-/*  Skills  */
+/* Default Skills Section */
 .skills {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -790,33 +653,31 @@ section .title::after {
   width: 100%;
   height: 100vh;
   color: #fff;
-}
-
-.skills .max-width {
-  padding: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.mi-section {
+/* Section Width Adjustments */
+.skills .max-width {
+  padding: 80px 20px;
   text-align: center;
-  padding: 50px 20px;
 }
 
 .mi-section h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #ffcc00;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 /* Skills Grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Desktop वर पुन्हा मोठे केले */
   gap: 20px;
-  max-width: 900px;
+  width: 90%;
+  max-width: 800px; /* अधिक जागा दिली */
   margin: 0 auto;
 }
 
@@ -830,18 +691,65 @@ section .title::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: 60px; /* Desktop वर मोठे केले */
   font-size: 1.2rem;
   font-weight: bold;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* Glow Effect on Hover */
 .skill:hover {
-  box-shadow: 0px 0px 20px #6ae9e9;
-  background-color:  #2A8F9C;
+  box-shadow: 0px 0px 15px #6ae9e9;
+  background-color: #2A8F9C;
   color: black;
-  transform: scale(1.2);
-  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+/* 📱 Mobile View Adjustments */
+@media (max-width: 768px) {
+  .skills {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .skills .max-width {
+    padding: 50px 15px;
+  }
+
+  .mi-section {
+    padding: 30px 10px;
+  }
+
+  .mi-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    width: 95%;
+  }
+
+  .skill {
+    font-size: 1rem;
+    height: 50px;
+  }
+}
+
+/* 📱 Very Small Screens */
+@media (max-width: 480px) {
+  .mi-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(90px, 1fr));
+  }
+
+  .skill {
+    font-size: 0.9rem;
+    height: 45px;
+  }
 }
 
 /* Projects */
@@ -1220,6 +1128,7 @@ footer {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Footer Content Layout */
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -1230,24 +1139,29 @@ footer {
   padding: 0 20px;
 }
 
+/* Footer Columns */
 .footer-content .left,
 .footer-content .center,
 .footer-content .right {
   flex: 1;
   min-width: 280px;
   padding: 10px;
+  text-align: left;
 }
 
+/* Section Headings */
 .left h2, .center h2, .right h2 {
   font-size: 20px;
   margin-bottom: 15px;
 }
 
+/* Left Section */
 .left p {
   font-size: 14px;
   color: #fffffe;
 }
 
+/* Center Section - Links */
 .center ul {
   list-style: none;
   padding: 0;
@@ -1260,14 +1174,14 @@ footer {
 .center ul li a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s ease-in-out;
 }
 
 .center ul li a:hover {
   color: #f5d237;
 }
 
-/* Contact Info */
+/* Right Section - Contact Info */
 .right p {
   display: flex;
   align-items: center;
@@ -1280,7 +1194,7 @@ footer {
   color: #f5d237;
 }
 
-/* Social Icons - Left Alignment */
+/* Social Icons */
 .social-icons {
   display: flex;
   flex-direction: row;
@@ -1288,16 +1202,12 @@ footer {
   margin-top: 10px;
   justify-content: flex-start; 
   align-items: center;
-  margin-left: -10px; 
 }
 
 .social-icons ul {
   list-style: none;
   padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start; 
-  align-items: center;
   gap: 10px;
 }
 
@@ -1305,11 +1215,12 @@ footer {
   display: inline-block;
 }
 
+/* Social Icons - Hover Effect */
 .social-icons a {
   color: #f5d237;
   font-size: 20px;
   text-decoration: none;
-  transition: 0.3s;
+  transition: transform 0.3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1318,7 +1229,7 @@ footer {
 }
 
 .social-icons a:hover {
-  transform: scale(1.1);
+  transform: scale(1.2) rotate(5deg);
 }
 
 /* Footer Bottom */
@@ -1340,11 +1251,18 @@ footer {
   color: red;
 }
 
-/* Responsive */
+/* 📱 Responsive Design */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footer-content .left,
+  .footer-content .center,
+  .footer-content .right {
+    text-align: center; /* Mobile वर Align Center केला */
+    padding: 15px 0;
   }
 
   .social-icons {
@@ -1355,6 +1273,28 @@ footer {
 
   .right p {
     justify-content: center;
+  }
+}
+
+/* 📱 Very Small Screens */
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 10px;
+  }
+
+  .footer-content .left p,
+  .right p {
+    font-size: 12px; /* Mobile वर टेक्स्ट थोडा छोटा केला */
+  }
+
+  .social-icons {
+    gap: 5px;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
   }
 }
 
