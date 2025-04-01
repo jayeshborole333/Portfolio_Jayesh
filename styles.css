@@ -5,6 +5,31 @@
   text-decoration: none;
 }
 
+.container {
+  max-width: 90%;
+  margin: auto;
+  padding: 10px;
+}
+
+
+button, input {
+  font-size: 16px;
+  padding: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .container {
+      width: 100%;
+      padding: 5px;
+  }
+
+  button, input {
+      font-size: 14px;
+      padding: 8px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -471,19 +496,19 @@ section .title::after {
 }
 
 /* Right Section - About Content */
-.right {
+.right-1 {
   flex: 1;
   padding-left: 40px;
 }
 
-.right .text {
+.right-1 .text {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 10px;
   color: #1e3551;
 }
 
-.right p {
+.right-1 p {
   text-align: justify;
   font-size: 18px;
   color: #333;
@@ -1333,8 +1358,7 @@ footer {
   }
 }
 
-
-/*  Media Query  */
+/*  Media Query Fixes */
 @keyframes pulsate {
   0% {
     box-shadow: 0 0 25px #888e8d, 0 0 50px #1e3551;
@@ -1423,25 +1447,54 @@ footer {
   }
 }
 
-@media (max-width: 690px) {
-  .max-width {
-    padding: 0 23px;
+@media (max-width: 768px) {
+  /* Navbar Styles */
+  .navbar .menu {
+    display: none; 
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #333;
+    flex-direction: column;
+    text-align: center;
   }
+
+  .navbar .menu-btn {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navbar .menu.active {
+    display: flex;
+  }
+
+  .navbar .menu li {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Home Section */
   .home .home-content .text-2 {
-    font-size: 60px;
+    font-size: 40px; /* Reduced for better fit */
   }
+
   .home .home-content .text-3 {
-    font-size: 32px;
+    font-size: 24px; /* Adjusted for readability */
   }
+
   .home .home-content a {
-    font-size: 20px;
+    font-size: 18px; /* Slightly reduced */
   }
+
+  /* Services Section */
   .services .serv-content .card {
     width: 100%;
+    margin-bottom: 20px; /* Added spacing between cards */
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 6000px) {
   .home .home-content .text-2 {
     font-size: 50px;
   }
@@ -1465,9 +1518,56 @@ footer {
   .scroll-up-btn {
     right: 15px;
     bottom: 15px;
-    height: 38px;
-    width: 35px;
+    height: auto;
+    width: auto;
     font-size: 23px;
     line-height: 38px;
+  }
+}
+/* General Mobile Styles */
+@media screen and (max-width: 768px) {
+ 
+  header {
+      padding: 40px 0;
+  }
+
+  h1 {
+      font-size: 2em;
+  }
+
+  .about-container {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .about-image img {
+      width: 150px;
+      height: 150px;
+  }
+
+  .project-container {
+      grid-template-columns: 1fr; /* Single column */
+      gap: 10px;
+      padding: 10px;
+  }
+
+  .project-card {
+      width: 90%;
+      margin: auto;
+  }
+
+  .experience-container {
+      padding: 10px;
+  }
+
+  .skills-container {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      padding: 10px;
+  }
+
+  .skill-item {
+      font-size: 16px;
+      padding: 10px;
   }
 }
