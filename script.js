@@ -48,7 +48,7 @@ $(document).ready(function () {
     loop: true
   });
 
-  var typed = new Typed(".typing-2", {
+   var typed = new Typed(".typing-2", {
     strings: [
       "Customer Support Engineer",
       "Support Engineer L2"
