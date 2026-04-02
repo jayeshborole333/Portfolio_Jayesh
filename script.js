@@ -29,7 +29,6 @@ $(document).ready(function () {
   });
 
   // ================= CHATBOT =================
-
   const icon = document.getElementById("chatbot-icon");
   const container = document.getElementById("chatbot-container");
   const input = document.getElementById("user-input");
@@ -38,8 +37,7 @@ $(document).ready(function () {
   // Toggle chatbot
   if (icon && container) {
     icon.addEventListener("click", () => {
-      container.style.display =
-        container.style.display === "flex" ? "none" : "flex";
+      container.classList.toggle("active");
     });
   }
 
@@ -50,16 +48,31 @@ $(document).ready(function () {
         let userText = input.value.trim();
         if (userText === "") return;
 
-        chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
-
-        let botReply = getBotResponse(userText);
-
-        setTimeout(() => {
-          chatBox.innerHTML += `<p><b>Bot:</b> ${botReply}</p>`;
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }, 400);
+        // User message
+        chatBox.innerHTML += `<p class="message"><b>You:</b> ${userText}</p>`;
 
         input.value = "";
+
+        // Typing animation
+        chatBox.innerHTML += `
+        <p class="message typing-msg">
+          <b>Bot:</b>
+          <span class="typing">
+            <span></span><span></span><span></span>
+          </span>
+        </p>`;
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Bot reply delay
+        setTimeout(() => {
+          document.querySelector(".typing-msg").remove();
+
+          let botReply = getBotResponse(userText);
+
+          chatBox.innerHTML += `<p class="message"><b>Bot:</b> ${botReply}</p>`;
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }, 800);
       }
     });
   }
