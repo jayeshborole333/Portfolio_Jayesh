@@ -1100,6 +1100,36 @@ section .title::after {
   background: none;
   color: #1e3551;
 }
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-family: Arial;
+}
+
+#chat-header {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#chat-box {
+  height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+#user-input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-top: 1px solid #ccc;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
