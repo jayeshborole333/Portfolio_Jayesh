@@ -32,39 +32,49 @@ $(document).ready(function () {
     $(".menu-btn i").toggleClass("active");
   });
 
-  // ================= CHATBOT =================
+ // Chatbot Toggle
+$("#chatbot-icon").click(function () {
+  $("#chatbot-container").toggle();
+});
 
-  const input = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
+// Chatbot Logic
+const input = document.getElementById("user-input");
+const chatBox = document.getElementById("chat-box");
 
-  if (input && chatBox) {
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        let userText = input.value.trim();
+if (input && chatBox) {
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      let userText = input.value.trim();
+      if (userText === "") return;
 
-        if (userText === "") return;
+      chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
 
-        chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+      let botReply = getBotResponse(userText);
 
-        let botReply = getBotResponse(userText);
+      setTimeout(() => {
         chatBox.innerHTML += `<p><b>Bot:</b> ${botReply}</p>`;
-
-        input.value = "";
         chatBox.scrollTop = chatBox.scrollHeight;
-      }
-    });
-  }
+      }, 500);
 
-  function getBotResponse(input) {
-    input = input.toLowerCase();
+      input.value = "";
+    }
+  });
+}
 
-    if (input.includes("hello") || input.includes("hi")) return "Hi! 👋";
-    if (input.includes("portfolio")) return "This is my portfolio website!";
-    if (input.includes("contact")) return "You can contact me via email!";
-    if (input.includes("name")) return "I am your portfolio bot 🤖";
+function getBotResponse(input) {
+  input = input.toLowerCase();
 
-    return "Sorry, I didn’t understand 😅";
-  }
+  if (input.includes("hi") || input.includes("hello"))
+    return "Hi! 👋 How can I help you?";
+  if (input.includes("portfolio"))
+    return "This is my personal portfolio 🚀";
+  if (input.includes("contact"))
+    return "You can contact me via email 📧";
+  if (input.includes("skills"))
+    return "I am a Customer Support Engineer 💻";
+
+  return "Sorry, I didn’t understand 😅";
+}
 
   // ================= TYPING ANIMATION =================
 
