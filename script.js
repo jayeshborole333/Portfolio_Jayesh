@@ -29,32 +29,33 @@ $(document).ready(function () {
   });
 
   // ================= CHATBOT =================
-  const icon = document.getElementById("chatbot-icon");
-  const container = document.getElementById("chatbot-container");
-  const input = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
+  // ================= CHATBOT =================
+const icon = document.getElementById("chatbot-icon");
+const container = document.getElementById("chatbot-container");
+const input = document.getElementById("user-input");
+const chatBox = document.getElementById("chat-box");
 
-  // Toggle chatbot
-  if (icon && container) {
-    icon.addEventListener("click", () => {
-      container.classList.toggle("active");
-    });
-  }
+// Toggle chatbot
+if (icon && container) {
+  icon.addEventListener("click", () => {
+    container.classList.toggle("active");
+  });
+}
 
-  // Chat logic
-  if (input && chatBox) {
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        let userText = input.value.trim();
-        if (userText === "") return;
+// Chat logic
+if (input && chatBox) {
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      let userText = input.value.trim();
+      if (userText === "") return;
 
-        // User message
-        chatBox.innerHTML += `<p class="message"><b>You:</b> ${userText}</p>`;
+      // User message
+      chatBox.innerHTML += `<p class="message"><b>You:</b> ${userText}</p>`;
 
-        input.value = "";
+      input.value = "";
 
-        // Typing animation
-        chatBox.innerHTML += `
+      // Typing animation
+      const typingHTML = `
         <p class="message typing-msg">
           <b>Bot:</b>
           <span class="typing">
@@ -62,20 +63,22 @@ $(document).ready(function () {
           </span>
         </p>`;
 
+      chatBox.insertAdjacentHTML("beforeend", typingHTML);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      // Bot reply
+      setTimeout(() => {
+        const typingEl = document.querySelector(".typing-msg");
+        if (typingEl) typingEl.remove(); // ✅ safe remove
+
+        let botReply = getBotResponse(userText);
+
+        chatBox.innerHTML += `<p class="message"><b>Bot:</b> ${botReply}</p>`;
         chatBox.scrollTop = chatBox.scrollHeight;
-
-        // Bot reply delay
-        setTimeout(() => {
-          document.querySelector(".typing-msg").remove();
-
-          let botReply = getBotResponse(userText);
-
-          chatBox.innerHTML += `<p class="message"><b>Bot:</b> ${botReply}</p>`;
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }, 800);
-      }
-    });
-  }
+      }, 800);
+    }
+  });
+}
 
   // Portfolio-based answers
   function getBotResponse(input) {
