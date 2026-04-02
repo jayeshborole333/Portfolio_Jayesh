@@ -1100,22 +1100,35 @@ section .title::after {
   background: none;
   color: #1e3551;
 }
-#chatbot {
+/*chatbot */
+#chatbot-icon {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 250px;
+  background: #007bff;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#chatbot-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 280px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-family: Arial;
+  display: none;
+  flex-direction: column;
 }
 
 #chat-header {
   background: #007bff;
   color: white;
   padding: 10px;
-  cursor: pointer;
 }
 
 #chat-box {
@@ -1125,12 +1138,11 @@ section .title::after {
 }
 
 #user-input {
-  width: 100%;
-  padding: 8px;
   border: none;
   border-top: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
 }
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-content {
