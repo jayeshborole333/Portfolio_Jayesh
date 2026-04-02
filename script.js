@@ -106,7 +106,7 @@ if (input && chatBox) {
     },
     {
       keywords: ["experience", "job", "role"],
-      reply: `Results-driven Customer Support & Technical Support Executive with hands-on experience in automation workflows, API integrations, webhook handling, AI chatbot troubleshooting, and JSON-based configurations. Skilled in incident management, system debugging, and real-time data communication. Strong analytical mindset with a focus on resolving complex issues, improving system performance, and meeting SLA targets.
+      reply: "Results-driven Customer Support & Technical Support Executive with hands-on experience in automation workflows, API integrations, webhook handling, AI chatbot troubleshooting, and JSON-based configurations. Skilled in incident management, system debugging, and real-time data communication. Strong analytical mindset with a focus on resolving complex issues, improving system performance, and meeting SLA targets."
       }
   ];
 
