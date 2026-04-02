@@ -88,44 +88,61 @@ $("#chatbot-icon").click(function () {
 });
 
 // Chatbot Logic
+// Toggle chatbot (NO jQuery needed)
+const icon = document.getElementById("chatbot-icon");
+const container = document.getElementById("chatbot-container");
+
+icon.addEventListener("click", () => {
+  container.style.display =
+    container.style.display === "flex" ? "none" : "flex";
+});
+
+// Chat logic
 const input = document.getElementById("user-input");
 const chatBox = document.getElementById("chat-box");
 
-if (input && chatBox) {
-  input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      let userText = input.value.trim();
-      if (userText === "") return;
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    let userText = input.value.trim();
+    if (userText === "") return;
 
-      chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+    chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
 
-      let botReply = getBotResponse(userText);
+    let botReply = getBotResponse(userText);
 
-      setTimeout(() => {
-        chatBox.innerHTML += `<p><b>Bot:</b> ${botReply}</p>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 500);
+    setTimeout(() => {
+      chatBox.innerHTML += `<p><b>Bot:</b> ${botReply}</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 400);
 
-      input.value = "";
-    }
-  });
-}
+    input.value = "";
+  }
+});
 
+// Smart portfolio answers
 function getBotResponse(input) {
   input = input.toLowerCase();
 
   if (input.includes("hi") || input.includes("hello"))
-    return "Hi! 👋 How can I help you?";
-  if (input.includes("portfolio"))
-    return "This is my personal portfolio 🚀";
-  if (input.includes("contact"))
-    return "You can contact me via email 📧";
+    return "Hi 👋 Welcome to my portfolio!";
+
+  if (input.includes("name"))
+    return "My name is Jayesh 😊";
+
+  if (input.includes("project") || input.includes("work"))
+    return "I have built a Room Expense Tracker project 💰";
+
   if (input.includes("skills"))
-    return "I am a Customer Support Engineer 💻";
+    return "I am skilled in Customer Support, Tech, and Web Basics 💻";
 
-  return "Sorry, I didn’t understand 😅";
+  if (input.includes("contact"))
+    return "You can contact me at: your@email.com 📧";
+
+  if (input.includes("experience"))
+    return "I have experience as a Customer Support Engineer 🚀";
+
+  return "Sorry 😅 I can answer only portfolio-related questions.";
 }
-
   // ================= TYPING ANIMATION =================
 
   var typed1 = new Typed(".typing", {
