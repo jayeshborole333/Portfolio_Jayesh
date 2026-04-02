@@ -80,7 +80,6 @@ if (input && chatBox) {
   });
 }
 
-  // Portfolio-based answers
   function getBotResponse(input) {
   input = input.toLowerCase();
 
@@ -99,7 +98,7 @@ if (input && chatBox) {
     },
     {
       keywords: ["skills", "tech", "technology"],
-      reply: "HTML, CSS, JavaScript, SQL, Chatbot specialist, Scrm master, Java, Spring, microservices Customer Support & WhatsApp API 💻"
+      reply: "HTML, CSS, JavaScript, SQL, Chatbot Specialist, Scrum Master, Java, Spring, Microservices, Customer Support & WhatsApp API 💻"
     },
     {
       keywords: ["contact", "email", "reach"],
@@ -107,11 +106,8 @@ if (input && chatBox) {
     },
     {
       keywords: ["experience", "job", "role"],
-      reply: "Application Support Engineer with 2 years of experience at Sofquare Digital (OPC) Pvt. Ltd.
-Skilled in application support, SQL, troubleshooting, and incident management. Strong
-foundation in IT fundamentals, with proven ability to ensure smooth functioning of businesscritical applications. Experienced in the Banking domain with exposure to Loan Management
-and Loan Origination Systems. Quick learner with effective problem-solving skills, teamwork,
-and adaptability to new technologies. 🚀"
+      reply: `Application Support Engineer with 2 years of experience at Sofquare Digital (OPC) Pvt. Ltd.
+Skilled in application support, SQL, troubleshooting, and incident management. Strong foundation in IT fundamentals with experience in Banking domain (Loan Management & LOS). 🚀`
     }
   ];
 
