@@ -82,6 +82,50 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+  // Chatbot Toggle
+$("#chatbot-icon").click(function () {
+  $("#chatbot-container").toggle();
+});
+
+// Chatbot Logic
+const input = document.getElementById("user-input");
+const chatBox = document.getElementById("chat-box");
+
+if (input && chatBox) {
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      let userText = input.value.trim();
+      if (userText === "") return;
+
+      chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+
+      let botReply = getBotResponse(userText);
+
+      setTimeout(() => {
+        chatBox.innerHTML += `<p><b>Bot:</b> ${botReply}</p>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 500);
+
+      input.value = "";
+    }
+  });
+}
+
+function getBotResponse(input) {
+  input = input.toLowerCase();
+
+  if (input.includes("hi") || input.includes("hello"))
+    return "Hi! 👋 How can I help you?";
+  if (input.includes("portfolio"))
+    return "This is my personal portfolio 🚀";
+  if (input.includes("contact"))
+    return "You can contact me via email 📧";
+  if (input.includes("skills"))
+    return "I am a Customer Support Engineer 💻";
+
+  return "Sorry, I didn’t understand 😅";
+}
+
   // ================= TYPING ANIMATION =================
 
   var typed1 = new Typed(".typing", {
