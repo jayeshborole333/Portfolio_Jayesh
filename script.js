@@ -106,9 +106,8 @@ if (input && chatBox) {
     },
     {
       keywords: ["experience", "job", "role"],
-      reply: `Application Support Engineer with 2 years of experience at Sofquare Digital (OPC) Pvt. Ltd.
-Skilled in application support, SQL, troubleshooting, and incident management. Strong foundation in IT fundamentals with experience in Banking domain (Loan Management & LOS). 🚀`
-    }
+      reply: `Results-driven Customer Support & Technical Support Executive with hands-on experience in automation workflows, API integrations, webhook handling, AI chatbot troubleshooting, and JSON-based configurations. Skilled in incident management, system debugging, and real-time data communication. Strong analytical mindset with a focus on resolving complex issues, improving system performance, and meeting SLA targets.
+      }
   ];
 
   // loop through responses
