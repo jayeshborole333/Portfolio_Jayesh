@@ -31,50 +31,56 @@ $(document).ready(function () {
     $(".navbar .menu").toggleClass("active");
     $(".menu-btn i").toggleClass("active");
   });
+import express from "express";
+import cors from "cors";
+import fetch from "node-fetch";
 
- // Chatbot Toggle
-$("#chatbot-icon").click(function () {
-  $("#chatbot-container").toggle();
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const PORT = 3000;
+
+// 👇 Apni portfolio info yaha likh
+const portfolioData = `
+My name is Jayesh.
+I am a Customer Support Engineer L2.
+I work on Interakt, WhatsApp API, integrations, and troubleshooting.
+My skills include HTML, CSS, JavaScript, and customer support.
+Contact: your@email.com
+`;
+
+app.post("/chat", async (req, res) => {
+  const userMessage = req.body.message;
+
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer YOUR_API_KEY"
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: `You are a portfolio assistant. Answer only based on this info: ${portfolioData}`
+        },
+        {
+          role: "user",
+          content: userMessage
+        }
+      ]
+    })
+  });
+
+  const data = await response.json();
+  res.json({ reply: data.choices[0].message.content });
 });
 
-// Chatbot Logic
-const input = document.getElementById("user-input");
-const chatBox = document.getElementById("chat-box");
-
-if (input && chatBox) {
-  input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      let userText = input.value.trim();
-      if (userText === "") return;
-
-      chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
-
-      let botReply = getBotResponse(userText);
-
-      setTimeout(() => {
-        chatBox.innerHTML += `<p><b>Bot:</b> ${botReply}</p>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 500);
-
-      input.value = "";
-    }
-  });
-}
-
-function getBotResponse(input) {
-  input = input.toLowerCase();
-
-  if (input.includes("hi") || input.includes("hello"))
-    return "Hi! 👋 How can I help you?";
-  if (input.includes("portfolio"))
-    return "This is my personal portfolio 🚀";
-  if (input.includes("contact"))
-    return "You can contact me via email 📧";
-  if (input.includes("skills"))
-    return "I am a Customer Support Engineer 💻";
-
-  return "Sorry, I didn’t understand 😅";
-}
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
   // ================= TYPING ANIMATION =================
 
