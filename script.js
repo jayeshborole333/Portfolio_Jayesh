@@ -82,29 +82,50 @@ if (input && chatBox) {
 
   // Portfolio-based answers
   function getBotResponse(input) {
-    input = input.toLowerCase();
+  input = input.toLowerCase();
 
-    if (input.includes("hi") || input.includes("hello"))
-      return "Hi 👋 Welcome to my portfolio!";
+  const responses = [
+    {
+      keywords: ["hi", "hello", "hey"],
+      reply: "Hi 👋 Welcome to my portfolio!"
+    },
+    {
+      keywords: ["name", "who are you"],
+      reply: "My name is Jayesh Borole 😊"
+    },
+    {
+      keywords: ["project", "work", "portfolio"],
+      reply: "I have built Coffee Shop, Headphone Landing Page, Food Ordering System, and Room Expense Tracker."
+    },
+    {
+      keywords: ["skills", "tech", "technology"],
+      reply: "HTML, CSS, JavaScript, SQL, Chatbot specialist, Scrm master, Java, Spring, microservices Customer Support & WhatsApp API 💻"
+    },
+    {
+      keywords: ["contact", "email", "reach"],
+      reply: "You can contact me at: jayeshborole210@gmail.com 📧"
+    },
+    {
+      keywords: ["experience", "job", "role"],
+      reply: "Application Support Engineer with 2 years of experience at Sofquare Digital (OPC) Pvt. Ltd.
+Skilled in application support, SQL, troubleshooting, and incident management. Strong
+foundation in IT fundamentals, with proven ability to ensure smooth functioning of businesscritical applications. Experienced in the Banking domain with exposure to Loan Management
+and Loan Origination Systems. Quick learner with effective problem-solving skills, teamwork,
+and adaptability to new technologies. 🚀"
+    }
+  ];
 
-    if (input.includes("name"))
-      return "My name is Jayesh 😊";
-
-    if (input.includes("project") || input.includes("work"))
-      return "I have built Coffee Shop, Headphone Landing Page, Food Ordering System, and Room Expense Tracker.";
-
-    if (input.includes("skills"))
-      return "HTML, CSS, JavaScript, Customer Support & WhatsApp API 💻";
-
-    if (input.includes("contact"))
-      return "You can contact me at: your@email.com 📧";
-
-    if (input.includes("experience"))
-      return "I am working as a Customer Support Engineer L2 🚀";
-
-    return "Ask me about my portfolio, skills, or projects 😊";
+  // loop through responses
+  for (let i = 0; i < responses.length; i++) {
+    for (let j = 0; j < responses[i].keywords.length; j++) {
+      if (input.includes(responses[i].keywords[j])) {
+        return responses[i].reply;
+      }
+    }
   }
 
+  return "Sorry 😅 I can answer only portfolio-related questions.";
+}
   // ================= TYPING =================
   var typed1 = new Typed(".typing", {
     strings: ["Customer Support Engineer", "Support Engineer L2"],
