@@ -80,8 +80,8 @@ if (input && chatBox) {
   });
 }
 
-  function getBotResponse(input) {
-  input = input.toLowerCase();
+function getBotResponse(input) {
+  input = String(input).toLowerCase();
 
   const responses = [
     {
@@ -89,7 +89,7 @@ if (input && chatBox) {
       reply: "Hi 👋 Welcome to my portfolio!"
     },
     {
-      keywords: ["name", "who are you"],
+      keywords: ["name", "who are you", "yourself"],
       reply: "My name is Jayesh Borole 😊"
     },
     {
@@ -106,15 +106,14 @@ if (input && chatBox) {
     },
     {
       keywords: ["experience", "job", "role"],
-      reply: "Results-driven Customer Support & Technical Support Executive with hands-on experience in automation workflows, API integrations, webhook handling, AI chatbot troubleshooting, and JSON-based configurations. Skilled in incident management, system debugging, and real-time data communication. Strong analytical mindset with a focus on resolving complex issues, improving system performance, and meeting SLA targets."
-      }
+      reply: "I am a Customer Support & Technical Support Executive with experience in automation, APIs, webhooks, and troubleshooting 🚀"
+    }
   ];
 
-  // loop through responses
-  for (let i = 0; i < responses.length; i++) {
-    for (let j = 0; j < responses[i].keywords.length; j++) {
-      if (input.includes(responses[i].keywords[j])) {
-        return responses[i].reply;
+  for (let item of responses) {
+    for (let keyword of item.keywords) {
+      if (input.includes(keyword)) {
+        return item.reply;
       }
     }
   }
