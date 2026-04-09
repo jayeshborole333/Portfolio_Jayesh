@@ -40,26 +40,24 @@ chatBox.innerHTML = localStorage.getItem("chat") || "";
 
 // Toggle chatbot
 icon.addEventListener("click", (e) => {
-  e.stopPropagation(); // important
+  e.stopPropagation();
   container.style.display =
     container.style.display === "flex" ? "none" : "flex";
 });
 
-// Prevent close when clicking inside chatbot
+// Prevent close when clicking inside
 container.addEventListener("click", (e) => {
   e.stopPropagation();
 });
 
-// 👉 OUTSIDE CLICK = CLOSE + RESET CHAT
+// Outside click = close + reset
 document.addEventListener("click", () => {
   container.style.display = "none";
-
-  // Reset chat
   chatBox.innerHTML = "";
   localStorage.removeItem("chat");
 });
 
-// Send message on Enter
+// Enter press
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") sendMessage(input.value);
 });
@@ -69,28 +67,43 @@ window.quickMsg = function (msg) {
   sendMessage(msg);
 };
 
-function sendMessage(text) {
+// ================= SEND MESSAGE =================
+async function sendMessage(text) {
   if (!text.trim()) return;
 
-  chatBox.innerHTML += `<p><b>You:</b> ${text}</p>`;
+  addMessage("You", text);
   input.value = "";
 
   showTyping();
 
-  setTimeout(() => {
-    removeTyping();
-    let reply = getBotResponse(text);
+  let reply = await getBotResponse(text); // ✅ FIXED (await)
 
-    chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
+  removeTyping();
+  addMessage("Bot", reply);
 
-    localStorage.setItem("chat", chatBox.innerHTML);
-  }, 700);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  localStorage.setItem("chat", chatBox.innerHTML);
 }
 
-// Typing animation
+// ================= MESSAGE UI =================
+function addMessage(sender, text) {
+  let className = sender === "You" ? "user-msg" : "bot-msg";
+
+  chatBox.innerHTML += `
+    <div class="${className}">
+      <span>${text}</span>
+    </div>
+  `;
+}
+
+// ================= TYPING =================
 function showTyping() {
-  chatBox.innerHTML += `<p id="typing">Typing...</p>`;
+  chatBox.innerHTML += `
+    <div id="typing" class="bot-msg">
+      <span class="dots"></span>
+    </div>
+  `;
 }
 
 function removeTyping() {
@@ -98,39 +111,23 @@ function removeTyping() {
   if (t) t.remove();
 }
 
-// ================= SMART BOT RESPONSE =================
-function getBotResponse(input) {
-  input = input.toLowerCase();
+// ================= AI API =================
+async function getBotResponse(input) {
+  try {
+    let res = await fetch("http://localhost:5000/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: input })
+    });
 
-  // Greeting
-  if (input.includes("hi") || input.includes("hello"))
-    return "Hi 👋 Welcome to my portfolio!";
+    let data = await res.json();
+    return data.reply;
 
-  // Name
-  if (input.includes("name"))
-    return "I am Jayesh Borole 🚀";
-
-  // Projects
-  if (input.includes("project") || input.includes("expense"))
-    return "I built a Room Expense Tracker 💰 to manage shared expenses easily.";
-
-  // Skills
-  if (input.includes("skills"))
-    return "Skills: Java, Spring Boot, APIs, JSON, Web Dev 💻";
-
-  // Contact
-  if (input.includes("contact"))
-    return "📧 Email: jayeshborole210@gmail.com";
-
-  // Experience
-  if (input.includes("experience"))
-    return "Currently working as Support Engineer at Jio Haptik 💼";
-
-  // Smart fallback (NEW)
-  if (input.includes("who") || input.includes("about"))
-    return "I'm a passionate developer & support engineer 🚀";
-
-  return "Ask me about projects, skills, contact 😊";
+  } catch (err) {
+    return "⚠️ Server down";
+  }
 }
   // ================= TYPING =================
   var typed1 = new Typed(".typing", {
