@@ -1101,53 +1101,99 @@ section .title::after {
   color: #1e3551;
 }
 /*chatbot */
+/* Chat Icon */
 #chatbot-icon {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #007bff;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
   color: white;
-  padding: 14px;
+  padding: 15px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   z-index: 9999;
 }
 
+/* Chat Container */
 #chatbot-container {
   position: fixed;
   bottom: 80px;
   right: 20px;
-  width: 320px;
-  background: #fff;
-  border-radius: 12px;
+  width: 330px;
+  height: 420px;
+  background: #f0f2f5;
+  border-radius: 15px;
   display: none;
   flex-direction: column;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
+/* Header */
 #chat-header {
-  background: #007bff;
+  background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
   padding: 12px;
-  border-radius: 12px 12px 0 0;
+  font-weight: bold;
+  text-align: center;
 }
 
+/* Chat Box */
 #chat-box {
-  height: 250px;
-  overflow-y: auto;
+  flex: 1;
   padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* USER MESSAGE */
+.user-msg {
+  align-self: flex-end;
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px 15px 0 15px;
+  margin: 5px;
+  max-width: 70%;
   font-size: 14px;
+}
+
+/* BOT MESSAGE */
+.bot-msg {
+  align-self: flex-start;
+  background: #e4e6eb;
   color: #000;
+  padding: 8px 12px;
+  border-radius: 15px 15px 15px 0;
+  margin: 5px;
+  max-width: 70%;
+  font-size: 14px;
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  border-top: 1px solid #ccc;
 }
 
 #user-input {
+  flex: 1;
   padding: 10px;
   border: none;
-  border-top: 1px solid #ccc;
   outline: none;
 }
 
+.input-area button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* Quick Buttons */
 #quick-btns {
   padding: 5px;
   text-align: center;
@@ -1157,7 +1203,7 @@ section .title::after {
   margin: 3px;
   padding: 5px 10px;
   border: none;
-  background: #eee;
+  background: #ddd;
   cursor: pointer;
   border-radius: 5px;
 }
