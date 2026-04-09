@@ -1102,7 +1102,6 @@ section .title::after {
 }
 /* ================= CHATBOT UI ================= */
 
-/* Chat Icon */
 #chatbot-icon {
   position: fixed;
   bottom: 20px;
@@ -1114,15 +1113,8 @@ section .title::after {
   cursor: pointer;
   font-size: 20px;
   z-index: 9999;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: 0.3s;
 }
 
-#chatbot-icon:hover {
-  transform: scale(1.1) rotate(10deg);
-}
-
-/* Chat Container */
 #chatbot-container {
   position: fixed;
   bottom: 80px;
@@ -1133,35 +1125,18 @@ section .title::after {
   flex-direction: column;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
+  background: #fff;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  animation: slideUp 0.3s ease;
 }
 
-/* Animation */
-@keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Header */
 #chat-header {
-  background: linear-gradient(135deg, #007bff, #0056b3);
+  background: #007bff;
   color: white;
   padding: 12px;
   text-align: center;
   font-weight: bold;
-  letter-spacing: 1px;
 }
 
-/* Chat Box */
 #chat-box {
   flex: 1;
   padding: 10px;
@@ -1170,114 +1145,65 @@ section .title::after {
   flex-direction: column;
 }
 
-/* Scrollbar */
-#chat-box::-webkit-scrollbar {
-  width: 5px;
-}
-#chat-box::-webkit-scrollbar-thumb {
-  background: #007bff;
-  border-radius: 10px;
-}
-
-/* USER MESSAGE */
 .user-msg {
   text-align: right;
   margin: 6px;
 }
 
 .user-msg span {
-  background: linear-gradient(135deg, #007bff, #00c6ff);
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 15px 15px 0 15px;
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
   display: inline-block;
-  max-width: 75%;
-  font-size: 14px;
-  animation: fadeIn 0.3s ease;
 }
 
-/* BOT MESSAGE */
 .bot-msg {
   text-align: left;
   margin: 6px;
 }
 
 .bot-msg span {
-  background: #ffffff;
-  color: #000;
-  padding: 10px 14px;
-  border-radius: 15px 15px 15px 0;
+  background: #f1f1f1;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
   display: inline-block;
-  max-width: 75%;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  animation: fadeIn 0.3s ease;
 }
 
-/* Fade Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* INPUT AREA */
 .input-area {
   display: flex;
   border-top: 1px solid #ccc;
-  background: #fff;
 }
 
 #user-input {
   flex: 1;
-  padding: 12px;
+  padding: 10px;
   border: none;
   outline: none;
-  font-size: 14px;
 }
 
 .input-area button {
-  background: linear-gradient(135deg, #007bff, #00c6ff);
+  background: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 10px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.input-area button:hover {
-  background: #0056b3;
-}
-
-/* Quick Buttons */
 #quick-btns {
-  padding: 5px;
   text-align: center;
-  background: #f9f9f9;
+  padding: 5px;
 }
 
 #quick-btns button {
   margin: 3px;
-  padding: 6px 10px;
+  padding: 5px 10px;
   border: none;
-  background: #e4e6eb;
+  background: #eee;
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 12px;
-  transition: 0.3s;
 }
 
-#quick-btns button:hover {
-  background: #007bff;
-  color: white;
-}
-
-/* Typing animation */
 .dots::after {
   content: " .";
   animation: dots 1s infinite;
