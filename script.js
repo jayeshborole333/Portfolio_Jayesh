@@ -30,54 +30,57 @@ $(document).ready(function () {
 
   // ================= CHATBOT =================
 
+ // ================= CHATBOT =================
+
   const icon = document.getElementById("chatbot-icon");
   const container = document.getElementById("chatbot-container");
   const input = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
 
-  if (!icon || !container || !input || !chatBox) {
-    console.error("Chatbot elements missing ❌");
-    return;
-  }
-
   // Load old chat
   chatBox.innerHTML = localStorage.getItem("chat") || "";
 
-  // Toggle chatbot
-  icon.addEventListener("click", (e) => {
+  // 👉 Toggle chatbot
+  icon.addEventListener("click", function (e) {
     e.stopPropagation();
-    container.style.display =
-      container.style.display === "flex" ? "none" : "flex";
+
+    if (container.style.display === "flex") {
+      container.style.display = "none";
+    } else {
+      container.style.display = "flex";
+    }
   });
 
-  // Prevent closing
-  container.addEventListener("click", (e) => {
+  // 👉 Prevent close when clicking inside
+  container.addEventListener("click", function (e) {
     e.stopPropagation();
   });
 
-  // Outside click = reset
-  document.addEventListener("click", () => {
+  // 👉 Outside click = close + reset
+  document.addEventListener("click", function () {
     container.style.display = "none";
     chatBox.innerHTML = "";
     localStorage.removeItem("chat");
   });
 
-  // Enter key
+  // 👉 Enter key
   input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") sendMessage(input.value);
+    if (e.key === "Enter") {
+      sendMessage(input.value);
+    }
   });
 
-  // Button click
+  // 👉 Button click
   window.sendBtn = function () {
     sendMessage(input.value);
   };
 
-  // Quick buttons
+  // 👉 Quick buttons
   window.quickMsg = function (msg) {
     sendMessage(msg);
   };
 
-  // ================= SEND =================
+  // ================= SEND MESSAGE =================
   async function sendMessage(text) {
     if (!text.trim()) return;
 
@@ -95,20 +98,22 @@ $(document).ready(function () {
     localStorage.setItem("chat", chatBox.innerHTML);
   }
 
+  // ================= ADD MESSAGE =================
   function addMessage(sender, text) {
-    let cls = sender === "You" ? "user-msg" : "bot-msg";
+    let className = sender === "You" ? "user-msg" : "bot-msg";
 
     chatBox.innerHTML += `
-      <div class="${cls}">
+      <div class="${className}">
         <span>${text}</span>
       </div>
     `;
   }
 
+  // ================= TYPING =================
   function showTyping() {
     chatBox.innerHTML += `
       <div id="typing" class="bot-msg">
-        <span class="dots"></span>
+        <span class="dots">Typing...</span>
       </div>
     `;
   }
@@ -118,7 +123,7 @@ $(document).ready(function () {
     if (t) t.remove();
   }
 
-  // ================= BOT =================
+  // ================= BOT RESPONSE =================
   async function getBotResponse(inputText) {
     try {
       let res = await fetch("http://localhost:5000/chat", {
@@ -133,28 +138,29 @@ $(document).ready(function () {
       return data.reply;
 
     } catch (err) {
+      // 🔥 fallback (important)
       let input = inputText.toLowerCase();
 
       if (input.includes("hi") || input.includes("hello"))
-        return "Hi 👋 Welcome!";
+        return "Hi 👋 Welcome to my portfolio!";
 
       if (input.includes("name"))
         return "I am Jayesh Borole 🚀";
 
       if (input.includes("project"))
-        return "Room Expense Tracker 💰";
+        return "I built Room Expense Tracker 💰";
 
       if (input.includes("skills"))
-        return "Java, Spring Boot, APIs 💻";
+        return "Java, Spring Boot, APIs, JSON 💻";
 
       if (input.includes("contact"))
         return "📧 jayeshborole210@gmail.com";
 
-      return "⚠️ Backend not running";
+      return "🤖 Backend not connected but I'm still alive!";
     }
   }
 
-  // Greeting
+  // 👉 Auto greeting
   if (!localStorage.getItem("chat")) {
     setTimeout(() => {
       addMessage("Bot", "Hi 👋 Ask me anything!");
