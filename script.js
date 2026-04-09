@@ -5,7 +5,7 @@ $(document).ready(function () {
     if (this.scrollY > 20) {
       $(".navbar").addClass("sticky");
     } else {
-      $(".navbar").removeClass("sticky");
+      $(".navbar").removeClass("sticky"); // FIXED
     }
 
     if (this.scrollY > 500) {
@@ -28,13 +28,17 @@ $(document).ready(function () {
     $(".menu-btn i").toggleClass("active");
   });
 
-// ================= CHATBOT =================
-document.addEventListener("DOMContentLoaded", function () {
+  // ================= CHATBOT =================
 
   const icon = document.getElementById("chatbot-icon");
   const container = document.getElementById("chatbot-container");
   const input = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
+
+  if (!icon || !container || !input || !chatBox) {
+    console.error("Chatbot elements missing ❌");
+    return;
+  }
 
   // Load old chat
   chatBox.innerHTML = localStorage.getItem("chat") || "";
@@ -46,24 +50,24 @@ document.addEventListener("DOMContentLoaded", function () {
       container.style.display === "flex" ? "none" : "flex";
   });
 
-  // Prevent closing when clicking inside
+  // Prevent closing
   container.addEventListener("click", (e) => {
     e.stopPropagation();
   });
 
-  // Outside click = close + reset chat
+  // Outside click = reset
   document.addEventListener("click", () => {
     container.style.display = "none";
     chatBox.innerHTML = "";
     localStorage.removeItem("chat");
   });
 
-  // Enter key send
+  // Enter key
   input.addEventListener("keypress", function (e) {
     if (e.key === "Enter") sendMessage(input.value);
   });
 
-  // Send button
+  // Button click
   window.sendBtn = function () {
     sendMessage(input.value);
   };
@@ -73,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     sendMessage(msg);
   };
 
-  // ================= SEND MESSAGE =================
+  // ================= SEND =================
   async function sendMessage(text) {
     if (!text.trim()) return;
 
@@ -91,18 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("chat", chatBox.innerHTML);
   }
 
-  // ================= ADD MESSAGE =================
   function addMessage(sender, text) {
-    let className = sender === "You" ? "user-msg" : "bot-msg";
+    let cls = sender === "You" ? "user-msg" : "bot-msg";
 
     chatBox.innerHTML += `
-      <div class="${className}">
+      <div class="${cls}">
         <span>${text}</span>
       </div>
     `;
   }
 
-  // ================= TYPING =================
   function showTyping() {
     chatBox.innerHTML += `
       <div id="typing" class="bot-msg">
@@ -116,9 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (t) t.remove();
   }
 
-  // ================= BOT RESPONSE =================
+  // ================= BOT =================
   async function getBotResponse(inputText) {
-
     try {
       let res = await fetch("http://localhost:5000/chat", {
         method: "POST",
@@ -132,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return data.reply;
 
     } catch (err) {
-      // fallback bot (offline)
       let input = inputText.toLowerCase();
 
       if (input.includes("hi") || input.includes("hello"))
@@ -142,19 +142,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return "I am Jayesh Borole 🚀";
 
       if (input.includes("project"))
-        return "I built Room Expense Tracker 💰";
+        return "Room Expense Tracker 💰";
 
       if (input.includes("skills"))
-        return "Java, Spring Boot, APIs, JSON 💻";
+        return "Java, Spring Boot, APIs 💻";
 
       if (input.includes("contact"))
         return "📧 jayeshborole210@gmail.com";
 
-      return "🤖 Backend not connected, but I can still chat!";
+      return "⚠️ Backend not running";
     }
   }
 
-  // Auto greeting
+  // Greeting
   if (!localStorage.getItem("chat")) {
     setTimeout(() => {
       addMessage("Bot", "Hi 👋 Ask me anything!");
