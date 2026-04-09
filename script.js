@@ -30,73 +30,116 @@ $(document).ready(function () {
 
 // ================= CHATBOT =================
 
-const icon = document.getElementById("chatbot-icon");
-const container = document.getElementById("chatbot-container");
-const input = document.getElementById("user-input");
-const chatBox = document.getElementById("chat-box");
+document.addEventListener("DOMContentLoaded", function () {
 
-// Load old chat
-chatBox.innerHTML = localStorage.getItem("chat") || "";
+  const icon = document.getElementById("chatbot-icon");
+  const container = document.getElementById("chatbot-container");
+  const input = document.getElementById("user-input");
+  const chatBox = document.getElementById("chat-box");
 
-// Toggle chatbot
-icon.addEventListener("click", (e) => {
-  e.stopPropagation();
-  container.style.display =
-    container.style.display === "flex" ? "none" : "flex";
+  // Load old chat
+  chatBox.innerHTML = localStorage.getItem("chat") || "";
+
+  // Toggle chatbot
+  icon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    container.style.display =
+      container.style.display === "flex" ? "none" : "flex";
+  });
+
+  // Prevent close when clicking inside
+  container.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Outside click = close + reset
+  document.addEventListener("click", () => {
+    container.style.display = "none";
+    chatBox.innerHTML = "";
+    localStorage.removeItem("chat");
+  });
+
+  // Enter press
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") sendMessage(input.value);
+  });
+
+  // Quick buttons
+  window.quickMsg = function (msg) {
+    sendMessage(msg);
+  };
+
+  // ================= SEND MESSAGE =================
+  async function sendMessage(text) {
+    if (!text.trim()) return;
+
+    addMessage("You", text);
+    input.value = "";
+
+    showTyping();
+
+    let reply = await getBotResponse(text);
+
+    removeTyping();
+    addMessage("Bot", reply);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    localStorage.setItem("chat", chatBox.innerHTML);
+  }
+
+  // ================= MESSAGE UI =================
+  function addMessage(sender, text) {
+    let className = sender === "You" ? "user-msg" : "bot-msg";
+
+    chatBox.innerHTML += `
+      <div class="${className}">
+        <span>${text}</span>
+      </div>
+    `;
+  }
+
+  // ================= TYPING =================
+  function showTyping() {
+    chatBox.innerHTML += `
+      <div id="typing" class="bot-msg">
+        <span class="dots"></span>
+      </div>
+    `;
+  }
+
+  function removeTyping() {
+    let t = document.getElementById("typing");
+    if (t) t.remove();
+  }
+
+  // ================= AI API =================
+  async function getBotResponse(input) {
+    try {
+      let res = await fetch("http://localhost:5000/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: input })
+      });
+
+      let data = await res.json();
+      return data.reply;
+
+    } catch (err) {
+      return "⚠️ Server down ya backend run nahi ho raha";
+    }
+  }
+
+  // ================= AUTO GREETING =================
+  if (!localStorage.getItem("chat")) {
+    setTimeout(() => {
+      addMessage("Bot", "Hi 👋 Ask me anything about my portfolio!");
+    }, 500);
+  }
+
 });
-
-// Prevent close when clicking inside
-container.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
-
-// Outside click = close + reset
-document.addEventListener("click", () => {
-  container.style.display = "none";
-  chatBox.innerHTML = "";
-  localStorage.removeItem("chat");
-});
-
-// Enter press
-input.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") sendMessage(input.value);
-});
-
-// Quick buttons
-window.quickMsg = function (msg) {
-  sendMessage(msg);
-};
-
-// ================= SEND MESSAGE =================
-async function sendMessage(text) {
-  if (!text.trim()) return;
-
-  addMessage("You", text);
-  input.value = "";
-
-  showTyping();
-
-  let reply = await getBotResponse(text); // ✅ FIXED (await)
-
-  removeTyping();
-  addMessage("Bot", reply);
-
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  localStorage.setItem("chat", chatBox.innerHTML);
-}
-
-// ================= MESSAGE UI =================
-function addMessage(sender, text) {
-  let className = sender === "You" ? "user-msg" : "bot-msg";
-
-  chatBox.innerHTML += `
-    <div class="${className}">
-      <span>${text}</span>
-    </div>
-  `;
-}
-
 // ================= TYPING =================
 function showTyping() {
   chatBox.innerHTML += `
