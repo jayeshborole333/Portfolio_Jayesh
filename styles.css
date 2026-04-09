@@ -1138,6 +1138,7 @@ section .title::after {
   overflow-y: auto;
   padding: 10px;
   font-size: 14px;
+  color: #000;
 }
 
 #user-input {
