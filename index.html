@@ -347,13 +347,18 @@
         </div>
     </div>
     
-   <!-- Chat Icon -->
+<!-- Chat Icon -->
 <div id="chatbot-icon">💬</div>
 
 <!-- Chatbot -->
 <div id="chatbot-container">
-  <div id="chat-header">Ask Me 🚀</div>
 
+  <!-- Header -->
+  <div id="chat-header">
+    Ask Me 🚀
+  </div>
+
+  <!-- Chat Messages -->
   <div id="chat-box"></div>
 
   <!-- Quick Buttons -->
@@ -363,8 +368,12 @@
     <button onclick="quickMsg('contact')">Contact</button>
   </div>
 
-  <input type="text" id="user-input" placeholder="Ask something..." />
- </div>
+  <!-- Input Area (IMPORTANT NEW) -->
+  <div class="input-area">
+    <input type="text" id="user-input" placeholder="Ask something..." />
+    <button onclick="sendBtn()">➤</button>
+  </div>
+
 </div>
 
   <div class="bottom">
