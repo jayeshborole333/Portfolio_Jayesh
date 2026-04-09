@@ -29,7 +29,6 @@ $(document).ready(function () {
   });
 
 // ================= CHATBOT =================
-
 document.addEventListener("DOMContentLoaded", function () {
 
   const icon = document.getElementById("chatbot-icon");
@@ -47,22 +46,27 @@ document.addEventListener("DOMContentLoaded", function () {
       container.style.display === "flex" ? "none" : "flex";
   });
 
-  // Prevent close when clicking inside
+  // Prevent closing when clicking inside
   container.addEventListener("click", (e) => {
     e.stopPropagation();
   });
 
-  // Outside click = close + reset
+  // Outside click = close + reset chat
   document.addEventListener("click", () => {
     container.style.display = "none";
     chatBox.innerHTML = "";
     localStorage.removeItem("chat");
   });
 
-  // Enter press
+  // Enter key send
   input.addEventListener("keypress", function (e) {
     if (e.key === "Enter") sendMessage(input.value);
   });
+
+  // Send button
+  window.sendBtn = function () {
+    sendMessage(input.value);
+  };
 
   // Quick buttons
   window.quickMsg = function (msg) {
@@ -84,11 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
     addMessage("Bot", reply);
 
     chatBox.scrollTop = chatBox.scrollHeight;
-
     localStorage.setItem("chat", chatBox.innerHTML);
   }
 
-  // ================= MESSAGE UI =================
+  // ================= ADD MESSAGE =================
   function addMessage(sender, text) {
     let className = sender === "You" ? "user-msg" : "bot-msg";
 
@@ -113,29 +116,48 @@ document.addEventListener("DOMContentLoaded", function () {
     if (t) t.remove();
   }
 
-  // ================= AI API =================
-  async function getBotResponse(input) {
+  // ================= BOT RESPONSE =================
+  async function getBotResponse(inputText) {
+
     try {
       let res = await fetch("http://localhost:5000/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ message: input })
+        body: JSON.stringify({ message: inputText })
       });
 
       let data = await res.json();
       return data.reply;
 
     } catch (err) {
-      return "⚠️ Server down ya backend run nahi ho raha";
+      // fallback bot (offline)
+      let input = inputText.toLowerCase();
+
+      if (input.includes("hi") || input.includes("hello"))
+        return "Hi 👋 Welcome!";
+
+      if (input.includes("name"))
+        return "I am Jayesh Borole 🚀";
+
+      if (input.includes("project"))
+        return "I built Room Expense Tracker 💰";
+
+      if (input.includes("skills"))
+        return "Java, Spring Boot, APIs, JSON 💻";
+
+      if (input.includes("contact"))
+        return "📧 jayeshborole210@gmail.com";
+
+      return "🤖 Backend not connected, but I can still chat!";
     }
   }
 
-  // ================= AUTO GREETING =================
+  // Auto greeting
   if (!localStorage.getItem("chat")) {
     setTimeout(() => {
-      addMessage("Bot", "Hi 👋 Ask me anything about my portfolio!");
+      addMessage("Bot", "Hi 👋 Ask me anything!");
     }, 500);
   }
 
