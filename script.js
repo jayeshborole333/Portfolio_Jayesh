@@ -28,85 +28,110 @@ $(document).ready(function () {
     $(".menu-btn i").toggleClass("active");
   });
 
-  // ================= CHATBOT =================
-  document.addEventListener("DOMContentLoaded", function () {
+// ================= CHATBOT =================
 
-  const icon = document.getElementById("chatbot-icon");
-  const container = document.getElementById("chatbot-container");
-  const input = document.getElementById("user-input");
-  const chatBox = document.getElementById("chat-box");
+const icon = document.getElementById("chatbot-icon");
+const container = document.getElementById("chatbot-container");
+const input = document.getElementById("user-input");
+const chatBox = document.getElementById("chat-box");
 
-  // Load old chat
-  chatBox.innerHTML = localStorage.getItem("chat") || "";
+// Load old chat
+chatBox.innerHTML = localStorage.getItem("chat") || "";
 
-  // Toggle
-  icon.addEventListener("click", () => {
-    container.style.display =
-      container.style.display === "flex" ? "none" : "flex";
-  });
-
-  // Send message
-  input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") sendMessage(input.value);
-  });
-
-  window.quickMsg = function (msg) {
-    sendMessage(msg);
-  };
-
-  function sendMessage(text) {
-    if (!text.trim()) return;
-
-    chatBox.innerHTML += `<p><b>You:</b> ${text}</p>`;
-    input.value = "";
-
-    showTyping();
-
-    setTimeout(() => {
-      removeTyping();
-      let reply = getBotResponse(text);
-      chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      // Save chat
-      localStorage.setItem("chat", chatBox.innerHTML);
-    }, 800);
-  }
-
-  function showTyping() {
-    chatBox.innerHTML += `<p id="typing">Bot is typing...</p>`;
-  }
-
-  function removeTyping() {
-    let typing = document.getElementById("typing");
-    if (typing) typing.remove();
-  }
-
-  function getBotResponse(input) {
-    input = input.toLowerCase();
-
-    if (input.includes("hi") || input.includes("hello"))
-      return "Hi 👋 Welcome to my portfolio!";
-
-    if (input.includes("name"))
-      return "I am Jayesh, a passionate developer 🚀";
-
-    if (input.includes("project") || input.includes("expense"))
-      return "I built a Room Expense Tracker 💰 where users can manage and split expenses easily.";
-
-    if (input.includes("skills"))
-      return "My skills include Customer Support, Java, JSON, APIs, and Web Development 💻";
-
-    if (input.includes("contact"))
-      return "You can contact me at: your@email.com 📧";
-
-    if (input.includes("experience"))
-      return "I have experience as a Customer Support Engineer with technical expertise.";
-
-    return "You can ask me about my projects, skills, or contact 😊";
-  }
-
+// Toggle chatbot
+icon.addEventListener("click", (e) => {
+  e.stopPropagation(); // important
+  container.style.display =
+    container.style.display === "flex" ? "none" : "flex";
 });
+
+// Prevent close when clicking inside chatbot
+container.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// 👉 OUTSIDE CLICK = CLOSE + RESET CHAT
+document.addEventListener("click", () => {
+  container.style.display = "none";
+
+  // Reset chat
+  chatBox.innerHTML = "";
+  localStorage.removeItem("chat");
+});
+
+// Send message on Enter
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") sendMessage(input.value);
+});
+
+// Quick buttons
+window.quickMsg = function (msg) {
+  sendMessage(msg);
+};
+
+function sendMessage(text) {
+  if (!text.trim()) return;
+
+  chatBox.innerHTML += `<p><b>You:</b> ${text}</p>`;
+  input.value = "";
+
+  showTyping();
+
+  setTimeout(() => {
+    removeTyping();
+    let reply = getBotResponse(text);
+
+    chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    localStorage.setItem("chat", chatBox.innerHTML);
+  }, 700);
+}
+
+// Typing animation
+function showTyping() {
+  chatBox.innerHTML += `<p id="typing">Typing...</p>`;
+}
+
+function removeTyping() {
+  let t = document.getElementById("typing");
+  if (t) t.remove();
+}
+
+// ================= SMART BOT RESPONSE =================
+function getBotResponse(input) {
+  input = input.toLowerCase();
+
+  // Greeting
+  if (input.includes("hi") || input.includes("hello"))
+    return "Hi 👋 Welcome to my portfolio!";
+
+  // Name
+  if (input.includes("name"))
+    return "I am Jayesh Borole 🚀";
+
+  // Projects
+  if (input.includes("project") || input.includes("expense"))
+    return "I built a Room Expense Tracker 💰 to manage shared expenses easily.";
+
+  // Skills
+  if (input.includes("skills"))
+    return "Skills: Java, Spring Boot, APIs, JSON, Web Dev 💻";
+
+  // Contact
+  if (input.includes("contact"))
+    return "📧 Email: jayeshborole210@gmail.com";
+
+  // Experience
+  if (input.includes("experience"))
+    return "Currently working as Support Engineer at Jio Haptik 💼";
+
+  // Smart fallback (NEW)
+  if (input.includes("who") || input.includes("about"))
+    return "I'm a passionate developer & support engineer 🚀";
+
+  return "Ask me about projects, skills, contact 😊";
+}
   // ================= TYPING =================
   var typed1 = new Typed(".typing", {
     strings: ["Customer Support Engineer", "Support Engineer L2"],
