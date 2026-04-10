@@ -36,7 +36,7 @@ $(document).ready(function () {
   const chatBox = document.getElementById("chat-box");
   const sendBtn = document.getElementById("send-btn");
 
-  // FORM PREVENT (safe add)
+  // Prevent form reload
   const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -46,8 +46,17 @@ $(document).ready(function () {
 
   if (icon && container && input && chatBox) {
 
-    // Load old chat
-    chatBox.innerHTML = localStorage.getItem("chat") || "";
+    // ✅ LOAD CHAT (JSON SAFE)
+    let savedChat = localStorage.getItem("chat");
+
+    if (savedChat) {
+      try {
+        let parsed = JSON.parse(savedChat);
+        chatBox.innerHTML = parsed.join("");
+      } catch {
+        chatBox.innerHTML = savedChat;
+      }
+    }
 
     // Toggle chatbot
     icon.addEventListener("click", () => {
@@ -55,14 +64,14 @@ $(document).ready(function () {
         container.style.display === "flex" ? "none" : "flex";
     });
 
-    // Enter key send
+    // Enter key
     input.addEventListener("keypress", function (e) {
       if (e.key === "Enter") {
         sendMessage(input.value);
       }
     });
 
-    // Send button click
+    // Send button
     if (sendBtn) {
       sendBtn.addEventListener("click", function () {
         sendMessage(input.value);
@@ -77,6 +86,7 @@ $(document).ready(function () {
     function sendMessage(text) {
       if (!text || !text.trim()) return;
 
+      // Show user msg
       chatBox.innerHTML += `<div class="user-msg"><span>${text}</span></div>`;
       input.value = "";
 
@@ -87,10 +97,16 @@ $(document).ready(function () {
 
         let reply = getBotResponse(text);
 
+        // Show bot msg
         chatBox.innerHTML += `<div class="bot-msg"><span>${reply}</span></div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        localStorage.setItem("chat", chatBox.innerHTML);
+        // ✅ SAVE JSON
+        let chats = JSON.parse(localStorage.getItem("chat")) || [];
+        chats.push(`<div class="user-msg"><span>${text}</span></div>`);
+        chats.push(`<div class="bot-msg"><span>${reply}</span></div>`);
+        localStorage.setItem("chat", JSON.stringify(chats));
+
       }, 800);
     }
 
@@ -113,41 +129,41 @@ $(document).ready(function () {
         return "I am Jayesh, a passionate developer 🚀";
 
       if (input.includes("project") || input.includes("expense"))
-        return "I built a Room Expense Tracker 💰 where users can manage and split expenses easily.";
+        return "I built a Room Expense Tracker 💰 where users can manage expenses.";
 
       if (input.includes("skills"))
-        return "My skills include Customer Support,Technical support, Java, Spring boot, JSON, APIs, and Web Development 💻";
+        return "My skills include Java, Spring Boot, JSON, APIs, Web Development 💻";
 
       if (input.includes("contact"))
-        return "You can contact me at: your@email.com 📧";
+        return "You can contact me at: jayeshborole205@gmail.com 📧";
 
       if (input.includes("experience"))
-        return "I have experience as a Customer Support Engineer with technical expertise.";
+        return "I have experience as a Customer Support Engineer L2.";
 
-      return "You can ask me about my projects, skills, or contact 😊";
+      return "Ask me about projects, skills, or contact 😊";
     }
-
   }
-  
-  // CLICK OUTSIDE → RESET CHATBOT
-document.addEventListener("click", function (e) {
-  if (!container.contains(e.target) && !icon.contains(e.target)) {
 
-    // Hide chatbot
-    container.style.display = "none";
+  // ================= CLICK OUTSIDE RESET =================
+  document.addEventListener("click", function (e) {
 
-    // Clear chat UI
-    chatBox.innerHTML = "";
+    if (
+      container &&
+      icon &&
+      !container.contains(e.target) &&
+      !icon.contains(e.target)
+    ) {
+      container.style.display = "none";
+      chatBox.innerHTML = "";
 
-    // Clear localStorage
-    localStorage.removeItem("chat");
+      // ✅ RESET STORAGE
+      localStorage.setItem("chat", JSON.stringify([]));
 
-    // Optional: clear input
-    input.value = "";
-  }
-});
+      input.value = "";
+    }
+  });
 
-  // ================= TYPING =================
+  // ================= TYPING EFFECT =================
   if (typeof Typed !== "undefined") {
     new Typed(".typing", {
       strings: ["Customer Support Engineer", "Support Engineer L2"],
