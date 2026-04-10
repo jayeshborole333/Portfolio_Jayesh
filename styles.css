@@ -1102,18 +1102,23 @@ section .title::after {
 }
 /* ================= CHATBOT UI ================= */
 
+/* CHAT ICON */
 #chatbot-icon {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: linear-gradient(135deg, #007bff, #00c6ff);
-  color: white;
+
+  width: 60px;
+  height: 60px;
+
   border-radius: 50%;
   cursor: pointer;
-  font-size: 20px;
   z-index: 9999;
-  padding: 0;
-  background: transparent;
+  overflow: hidden;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #chatbot-container {
