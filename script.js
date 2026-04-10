@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  // ================= SCROLL =================
+ // ================= SCROLL =================
   $(window).scroll(function () {
     if (this.scrollY > 20) {
       $(".navbar").addClass("sticky");
@@ -17,6 +17,10 @@ $(document).ready(function () {
 
   $(".scroll-up-btn").click(function () {
     $("html").animate({ scrollTop: 0 });
+  });
+
+  $(".navbar .menu li a").click(function () {
+    $("html").css("scrollBehavior", "smooth");
   });
 
   $(".menu-btn").click(function () {
