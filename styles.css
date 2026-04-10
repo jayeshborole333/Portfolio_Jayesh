@@ -1108,11 +1108,12 @@ section .title::after {
   right: 20px;
   background: linear-gradient(135deg, #007bff, #00c6ff);
   color: white;
-  padding: 16px;
   border-radius: 50%;
   cursor: pointer;
   font-size: 20px;
   z-index: 9999;
+  padding: 0;
+  background: transparent;
 }
 
 #chatbot-container {
@@ -1397,7 +1398,7 @@ footer {
   .footer-content .left,
   .footer-content .center,
   .footer-content .right {
-    text-align: center; /* Mobile वर Align Center केला */
+    text-align: center;
     padding: 15px 0;
   }
 
