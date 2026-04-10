@@ -29,111 +29,127 @@ $(document).ready(function () {
   });
 
   // ================= CHATBOT =================
-  document.addEventListener("DOMContentLoaded", function () {
 
   const icon = document.getElementById("chatbot-icon");
   const container = document.getElementById("chatbot-container");
   const input = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
 
-  // Load old chat
-  chatBox.innerHTML = localStorage.getItem("chat") || "";
+  // Safety check (avoid null error)
+  if (icon && container && input && chatBox) {
 
-  // Toggle
-  icon.addEventListener("click", () => {
-    container.style.display =
-      container.style.display === "flex" ? "none" : "flex";
-  });
+    // Load old chat
+    chatBox.innerHTML = localStorage.getItem("chat") || "";
 
-  // Send message
-  input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") sendMessage(input.value);
-  });
+    // Toggle chatbot
+    icon.addEventListener("click", () => {
+      container.style.display =
+        container.style.display === "flex" ? "none" : "flex";
+    });
 
-  window.quickMsg = function (msg) {
-    sendMessage(msg);
-  };
+    // Enter key send
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage(input.value);
+      }
+    });
 
-  function sendMessage(text) {
-    if (!text.trim()) return;
+    // Global quick buttons
+    window.quickMsg = function (msg) {
+      sendMessage(msg);
+    };
 
-    chatBox.innerHTML += `<p><b>You:</b> ${text}</p>`;
-    input.value = "";
+    // Send button fix
+    window.sendBtn = function () {
+      sendMessage(input.value);
+    };
 
-    showTyping();
+    function sendMessage(text) {
+      if (!text || !text.trim()) return;
 
-    setTimeout(() => {
-      removeTyping();
-      let reply = getBotResponse(text);
-      chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
-      chatBox.scrollTop = chatBox.scrollHeight;
+      chatBox.innerHTML += `<div class="user-msg"><span>${text}</span></div>`;
+      input.value = "";
 
-      // Save chat
-      localStorage.setItem("chat", chatBox.innerHTML);
-    }, 800);
+      showTyping();
+
+      setTimeout(() => {
+        removeTyping();
+
+        let reply = getBotResponse(text);
+
+        chatBox.innerHTML += `<div class="bot-msg"><span>${reply}</span></div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        localStorage.setItem("chat", chatBox.innerHTML);
+      }, 800);
+    }
+
+    function showTyping() {
+      chatBox.innerHTML += `<p id="typing">Bot is typing...</p>`;
+    }
+
+    function removeTyping() {
+      let typing = document.getElementById("typing");
+      if (typing) typing.remove();
+    }
+
+    function getBotResponse(input) {
+      input = input.toLowerCase();
+
+      if (input.includes("hi") || input.includes("hello"))
+        return "Hi 👋 Welcome to my portfolio!";
+
+      if (input.includes("name"))
+        return "I am Jayesh, a passionate developer 🚀";
+
+      if (input.includes("project") || input.includes("expense"))
+        return "I built a Room Expense Tracker 💰 where users can manage and split expenses easily.";
+
+      if (input.includes("skills"))
+        return "My skills include Customer Support, Java, JSON, APIs, and Web Development 💻";
+
+      if (input.includes("contact"))
+        return "You can contact me at: your@email.com 📧";
+
+      if (input.includes("experience"))
+        return "I have experience as a Customer Support Engineer with technical expertise.";
+
+      return "You can ask me about my projects, skills, or contact 😊";
+    }
+
   }
 
-  function showTyping() {
-    chatBox.innerHTML += `<p id="typing">Bot is typing...</p>`;
+  // ================= TYPING =================
+  if (typeof Typed !== "undefined") {
+    var typed1 = new Typed(".typing", {
+      strings: ["Customer Support Engineer", "Support Engineer L2"],
+      typeSpeed: 100,
+      backSpeed: 60,
+      loop: true
+    });
+
+    var typed2 = new Typed(".typing-2", {
+      strings: ["Customer Support Engineer", "Support Engineer L2"],
+      typeSpeed: 100,
+      backSpeed: 60,
+      loop: true
+    });
   }
 
-  function removeTyping() {
-    let typing = document.getElementById("typing");
-    if (typing) typing.remove();
-  }
-
-  function getBotResponse(input) {
-    input = input.toLowerCase();
-
-    if (input.includes("hi") || input.includes("hello"))
-      return "Hi 👋 Welcome to my portfolio!";
-
-    if (input.includes("name"))
-      return "I am Jayesh, a passionate developer 🚀";
-
-    if (input.includes("project") || input.includes("expense"))
-      return "I built a Room Expense Tracker 💰 where users can manage and split expenses easily.";
-
-    if (input.includes("skills"))
-      return "My skills include Customer Support, Java, JSON, APIs, and Web Development 💻";
-
-    if (input.includes("contact"))
-      return "You can contact me at: your@email.com 📧";
-
-    if (input.includes("experience"))
-      return "I have experience as a Customer Support Engineer with technical expertise.";
-
-    return "You can ask me about my projects, skills, or contact 😊";
+  // ================= CAROUSEL =================
+  if ($.fn.owlCarousel) {
+    $(".carousel").owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        1000: { items: 3 }
+      }
+    });
   }
 
 });
-  // ================= TYPING =================
-  var typed1 = new Typed(".typing", {
-    strings: ["Customer Support Engineer", "Support Engineer L2"],
-    typeSpeed: 100,
-    backSpeed: 60,
-    loop: true
-  });
-
-  var typed2 = new Typed(".typing-2", {
-    strings: ["Customer Support Engineer", "Support Engineer L2"],
-    typeSpeed: 100,
-    backSpeed: 60,
-    loop: true
-  });
-
-  // ================= CAROUSEL =================
-  $(".carousel").owlCarousel({
-    margin: 20,
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: true,
-    responsive: {
-      0: { items: 1 },
-      600: { items: 2 },
-      1000: { items: 3 }
-    }
-  });
-
-}); 
