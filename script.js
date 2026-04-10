@@ -34,8 +34,16 @@ $(document).ready(function () {
   const container = document.getElementById("chatbot-container");
   const input = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
+  const sendBtn = document.getElementById("send-btn");
 
-  // Safety check (avoid null error)
+  // FORM PREVENT (safe add)
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+  }
+
   if (icon && container && input && chatBox) {
 
     // Load old chat
@@ -54,14 +62,16 @@ $(document).ready(function () {
       }
     });
 
-    // Global quick buttons
+    // Send button click
+    if (sendBtn) {
+      sendBtn.addEventListener("click", function () {
+        sendMessage(input.value);
+      });
+    }
+
+    // Quick buttons
     window.quickMsg = function (msg) {
       sendMessage(msg);
-    };
-
-    // Send button fix
-    window.sendBtn = function () {
-      sendMessage(input.value);
     };
 
     function sendMessage(text) {
@@ -106,7 +116,7 @@ $(document).ready(function () {
         return "I built a Room Expense Tracker 💰 where users can manage and split expenses easily.";
 
       if (input.includes("skills"))
-        return "My skills include Customer Support, Java, JSON, APIs, and Web Development 💻";
+        return "My skills include Customer Support,Technical support, Java, Spring boot, JSON, APIs, and Web Development 💻";
 
       if (input.includes("contact"))
         return "You can contact me at: your@email.com 📧";
@@ -118,17 +128,35 @@ $(document).ready(function () {
     }
 
   }
+  
+  // CLICK OUTSIDE → RESET CHATBOT
+document.addEventListener("click", function (e) {
+  if (!container.contains(e.target) && !icon.contains(e.target)) {
+
+    // Hide chatbot
+    container.style.display = "none";
+
+    // Clear chat UI
+    chatBox.innerHTML = "";
+
+    // Clear localStorage
+    localStorage.removeItem("chat");
+
+    // Optional: clear input
+    input.value = "";
+  }
+});
 
   // ================= TYPING =================
   if (typeof Typed !== "undefined") {
-    var typed1 = new Typed(".typing", {
+    new Typed(".typing", {
       strings: ["Customer Support Engineer", "Support Engineer L2"],
       typeSpeed: 100,
       backSpeed: 60,
       loop: true
     });
 
-    var typed2 = new Typed(".typing-2", {
+    new Typed(".typing-2", {
       strings: ["Customer Support Engineer", "Support Engineer L2"],
       typeSpeed: 100,
       backSpeed: 60,
