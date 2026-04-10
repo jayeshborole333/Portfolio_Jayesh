@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
- // ================= SCROLL =================
+  // ================= SCROLL =================
   $(window).scroll(function () {
     if (this.scrollY > 20) {
       $(".navbar").addClass("sticky");
@@ -28,7 +28,8 @@ $(document).ready(function () {
     $(".menu-btn i").toggleClass("active");
   });
 
- // ================= CHATBOT =================
+  // ================= CHATBOT =================
+  document.addEventListener("DOMContentLoaded", function () {
 
   const icon = document.getElementById("chatbot-icon");
   const container = document.getElementById("chatbot-container");
@@ -38,166 +39,74 @@ $(document).ready(function () {
   // Load old chat
   chatBox.innerHTML = localStorage.getItem("chat") || "";
 
-  // 👉 Toggle chatbot
-  icon.addEventListener("click", function (e) {
-    e.stopPropagation();
-
-    if (container.style.display === "flex") {
-      container.style.display = "none";
-    } else {
-      container.style.display = "flex";
-    }
+  // Toggle
+  icon.addEventListener("click", () => {
+    container.style.display =
+      container.style.display === "flex" ? "none" : "flex";
   });
 
-  // 👉 Prevent close when clicking inside
-  container.addEventListener("click", function (e) {
-    e.stopPropagation();
-  });
-
-  // 👉 Outside click = close + reset
-  document.addEventListener("click", function () {
-    container.style.display = "none";
-    chatBox.innerHTML = "";
-    localStorage.removeItem("chat");
-  });
-
-  // 👉 Enter key
+  // Send message
   input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendMessage(input.value);
-    }
+    if (e.key === "Enter") sendMessage(input.value);
   });
 
-  // 👉 Button click
-  window.sendBtn = function () {
-    sendMessage(input.value);
-  };
-
-  // 👉 Quick buttons
   window.quickMsg = function (msg) {
     sendMessage(msg);
   };
 
-  // ================= SEND MESSAGE =================
-  async function sendMessage(text) {
+  function sendMessage(text) {
     if (!text.trim()) return;
 
-    addMessage("You", text);
+    chatBox.innerHTML += `<p><b>You:</b> ${text}</p>`;
     input.value = "";
 
     showTyping();
 
-    let reply = await getBotResponse(text);
+    setTimeout(() => {
+      removeTyping();
+      let reply = getBotResponse(text);
+      chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
 
-    removeTyping();
-    addMessage("Bot", reply);
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-    localStorage.setItem("chat", chatBox.innerHTML);
+      // Save chat
+      localStorage.setItem("chat", chatBox.innerHTML);
+    }, 800);
   }
 
-  // ================= ADD MESSAGE =================
-  function addMessage(sender, text) {
-    let className = sender === "You" ? "user-msg" : "bot-msg";
-
-    chatBox.innerHTML += `
-      <div class="${className}">
-        <span>${text}</span>
-      </div>
-    `;
-  }
-
-  // ================= TYPING =================
   function showTyping() {
-    chatBox.innerHTML += `
-      <div id="typing" class="bot-msg">
-        <span class="dots">Typing...</span>
-      </div>
-    `;
+    chatBox.innerHTML += `<p id="typing">Bot is typing...</p>`;
   }
 
   function removeTyping() {
-    let t = document.getElementById("typing");
-    if (t) t.remove();
+    let typing = document.getElementById("typing");
+    if (typing) typing.remove();
   }
 
-  // ================= BOT RESPONSE =================
-  async function getBotResponse(inputText) {
-    try {
-      let res = await fetch("http://localhost:5000/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: inputText })
-      });
+  function getBotResponse(input) {
+    input = input.toLowerCase();
 
-      let data = await res.json();
-      return data.reply;
+    if (input.includes("hi") || input.includes("hello"))
+      return "Hi 👋 Welcome to my portfolio!";
 
-    } catch (err) {
-      // 🔥 fallback (important)
-      let input = inputText.toLowerCase();
+    if (input.includes("name"))
+      return "I am Jayesh, a passionate developer 🚀";
 
-      if (input.includes("hi") || input.includes("hello"))
-        return "Hi 👋 Welcome to my portfolio!";
+    if (input.includes("project") || input.includes("expense"))
+      return "I built a Room Expense Tracker 💰 where users can manage and split expenses easily.";
 
-      if (input.includes("name"))
-        return "I am Jayesh Borole 🚀";
+    if (input.includes("skills"))
+      return "My skills include Customer Support, Java, JSON, APIs, and Web Development 💻";
 
-      if (input.includes("project"))
-        return "I built Room Expense Tracker 💰";
+    if (input.includes("contact"))
+      return "You can contact me at: your@email.com 📧";
 
-      if (input.includes("skills"))
-        return "Java, Spring Boot, APIs, JSON 💻";
+    if (input.includes("experience"))
+      return "I have experience as a Customer Support Engineer with technical expertise.";
 
-      if (input.includes("contact"))
-        return "📧 jayeshborole210@gmail.com";
-
-      return "🤖 Backend not connected but I'm still alive!";
-    }
-  }
-
-  // 👉 Auto greeting
-  if (!localStorage.getItem("chat")) {
-    setTimeout(() => {
-      addMessage("Bot", "Hi 👋 Ask me anything!");
-    }, 500);
+    return "You can ask me about my projects, skills, or contact 😊";
   }
 
 });
-// ================= TYPING =================
-function showTyping() {
-  chatBox.innerHTML += `
-    <div id="typing" class="bot-msg">
-      <span class="dots"></span>
-    </div>
-  `;
-}
-
-function removeTyping() {
-  let t = document.getElementById("typing");
-  if (t) t.remove();
-}
-
-// ================= AI API =================
-async function getBotResponse(input) {
-  try {
-    let res = await fetch("http://localhost:5000/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: input })
-    });
-
-    let data = await res.json();
-    return data.reply;
-
-  } catch (err) {
-    return "⚠️ Server down";
-  }
-}
   // ================= TYPING =================
   var typed1 = new Typed(".typing", {
     strings: ["Customer Support Engineer", "Support Engineer L2"],
@@ -227,4 +136,4 @@ async function getBotResponse(input) {
     }
   });
 
-});
+}); 
