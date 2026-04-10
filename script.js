@@ -5,7 +5,7 @@ $(document).ready(function () {
     if (this.scrollY > 20) {
       $(".navbar").addClass("sticky");
     } else {
-      $(".navbar").removeClass("sticky"); // FIXED
+      $(".navbar").removeClass("sticky");
     }
 
     if (this.scrollY > 500) {
@@ -19,16 +19,10 @@ $(document).ready(function () {
     $("html").animate({ scrollTop: 0 });
   });
 
-  $(".navbar .menu li a").click(function () {
-    $("html").css("scrollBehavior", "smooth");
-  });
-
   $(".menu-btn").click(function () {
     $(".navbar .menu").toggleClass("active");
     $(".menu-btn i").toggleClass("active");
   });
-
-  // ================= CHATBOT =================
 
  // ================= CHATBOT =================
 
