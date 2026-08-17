@@ -3,1481 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayesh Borole | Portfolio</title>
 
-  <title>Jayesh Borole | Software Engineer Portfolio</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Ubuntu:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  >
-
-  <!-- Owl Carousel -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-  >
-
-  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <div class="scroll-up-btn"><i class="fas fa-angle-up"></i></div>
 
-<!-- ================= SCROLL TOP ================= -->
-<button class="scroll-up-btn" id="scrollTopBtn" aria-label="Scroll to top">
-  <i class="fas fa-angle-up"></i>
-</button>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="max-width nav-inner">
+      <div class="logo">
+        <a href="#home">
+          <img src="Image/Jayesh.jpg" alt="Jayesh" class="logo-img">
+          <span>Jayesh</span>
+        </a>
+      </div>
 
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-<!-- ================= NAVBAR ================= -->
-
-<nav class="navbar" id="navbar">
-
-  <div class="max-width nav-inner">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <a href="#home">
-        <img src="Image/Jayesh.jpg" alt="Jayesh Borole" class="logo-img">
-        <span>Jayesh</span>
-      </a>
-    </div>
-
-
-    <!-- MENU -->
-    <ul class="menu" id="main-menu">
-
-      <li>
-        <a href="#home">Home</a>
-      </li>
-
-      <li>
-        <a href="#about">About</a>
-      </li>
-
-      <li>
-        <a href="#services">Services</a>
-      </li>
-
-      <li>
-        <a href="#skills">Skills</a>
-      </li>
-
-      <li>
-        <a href="#projects">Projects</a>
-      </li>
-
-
-      <!-- MORE DROPDOWN -->
-      <li class="dropdown">
-
-        <button class="dropdown-btn">
-          More
-          <i class="fas fa-chevron-down"></i>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
         </button>
-
-        <ul class="dropdown-menu">
-
-          <li>
-            <a href="#education">
-              <i class="fas fa-graduation-cap"></i>
-              Education
-            </a>
-          </li>
-
-          <li>
-            <a href="#experience">
-              <i class="fas fa-briefcase"></i>
-              Experience
-            </a>
-          </li>
-
-          <li>
-            <a href="#stats">
-              <i class="fas fa-chart-simple"></i>
-              Developer Stats
-            </a>
-          </li>
-
-          <li>
-            <a href="#github">
-              <i class="fab fa-github"></i>
-              GitHub
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
-
-
-      <li>
-        <a href="#contact">Contact</a>
-      </li>
-
-    </ul>
-
-
-    <!-- NAV ACTIONS -->
-    <div class="nav-actions">
-
-      <!-- Theme -->
-      <button
-        id="theme-toggle"
-        class="theme-toggle"
-        aria-label="Toggle dark mode"
-      >
-        <i class="fas fa-moon"></i>
-      </button>
-
-      <!-- Mobile Menu -->
-      <button
-        class="menu-btn"
-        id="menu-btn"
-        aria-label="Open navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-
+        <button class="menu-btn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+      </div>
     </div>
+  </nav>
 
-  </div>
+  <!-- HOME -->
+  <section class="home" id="home">
+    <div class="max-width">
+      <div class="home-content">
+        <div class="text-content">
+          <div class="text-1">Hello, This is</div>
+          <div class="text-2">Jayesh Borole</div>
+          <div class="text-3">I'm a <span class="typing"></span></div>
 
-</nav>
-
-
-
-<!-- ================= HOME ================= -->
-
-<section class="home" id="home">
-
-  <div class="home-overlay"></div>
-
-  <div class="max-width home-wrapper">
-
-    <div class="home-content">
-
-      <div class="text-content">
-
-        <div class="text-1">
-          Hello, This is
-        </div>
-
-        <div class="text-2">
-          Jayesh Borole
-        </div>
-
-        <div class="text-3">
-          I'm a
-          <span class="typing"></span>
-        </div>
-
-
-        <!-- Buttons -->
-        <div class="hero-buttons">
-
-          <button
-            id="resume-preview-btn"
-            class="resume-btn"
-          >
-            <i class="fas fa-file-pdf"></i>
-            Resume
-          </button>
-
-          <a href="#contact" class="outline-btn">
-            <i class="fas fa-paper-plane"></i>
-            Let's Connect
-          </a>
-
-        </div>
-
-
-        <!-- Social -->
-        <div class="social-icons-1">
-
-          <a
-            href="https://www.linkedin.com/in/jayesh-borole-420711390/"
-            target="_blank"
-            rel="noopener"
-            aria-label="LinkedIn"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-
-          <a
-            href="https://github.com/jayeshborole333"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-
-          <a
-            href="https://wa.me/919270279307"
-            target="_blank"
-            rel="noopener"
-            aria-label="WhatsApp"
-          >
-            <i class="fab fa-whatsapp"></i>
-          </a>
-
-          <a
-            href="mailto:jayeshborole210@gmail.com"
-            aria-label="Email"
-          >
-            <i class="fas fa-envelope"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- HERO BADGE -->
-      <div class="availability-badge">
-        <span class="status-dot"></span>
-        Available for opportunities
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= ABOUT ================= -->
-
-<section class="about reveal" id="about">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      About Me
-    </h2>
-
-    <div class="about-content">
-
-      <div class="column left-1">
-
-        <div class="profile-image-wrapper">
-
-          <img
-            src="Image/Photo.jpg"
-            alt="Jayesh Borole"
-          >
-
-          <span class="profile-status">
-            <i class="fas fa-check"></i>
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="column right-1">
-
-        <div class="text">
-          I'm Jayesh Borole and I'm a
-          <span class="typing-2"></span>
-        </div>
-
-        <p>
-          I am a passionate software professional with a solid
-          foundation in programming and problem-solving.
-          Currently working as a Support Engineer at
-          Jio Haptik Private Limited, I focus on technical
-          support, application troubleshooting and seamless
-          system operations.
-        </p>
-
-        <p>
-          I have hands-on experience in Core Java,
-          Spring Boot, Hibernate, RESTful Web Services,
-          SQL and application support. I enjoy solving
-          technical problems and working closely with
-          development and product teams.
-        </p>
-
-
-        <!-- DETAILS -->
-        <div class="about-details">
-
-          <div>
-            <i class="fas fa-user"></i>
-            <strong>Age:</strong>
-            <span>23</span>
+          <div class="hero-buttons">
+            <button id="resume-preview-btn" class="resume-btn">
+              <i class="fas fa-file-pdf"></i> Resume
+            </button>
+            <a href="#contact" class="outline-btn">Let's Connect</a>
           </div>
 
-          <div>
-            <i class="fas fa-envelope"></i>
-            <strong>Email:</strong>
-            <a href="mailto:jayeshborole210@gmail.com">
-              jayeshborole210@gmail.com
-            </a>
+          <div class="social-icons-1">
+            <a href="https://www.linkedin.com/in/jayesh-borole-420711390/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/jayeshborole333" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/919270279307" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:jayeshborole210@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
           </div>
-
-          <div>
-            <i class="fas fa-phone"></i>
-            <strong>Phone:</strong>
-            <a href="tel:+919270279307">
-              +91 9270279307
-            </a>
-          </div>
-
-          <div>
-            <i class="fas fa-location-dot"></i>
-            <strong>Location:</strong>
-            <span>Maharashtra, India</span>
-          </div>
-
         </div>
-
-
-        <button
-          id="resume-preview-btn-2"
-          class="download-btn"
-        >
-          <i class="fas fa-file-pdf"></i>
-          View CV
-        </button>
-
       </div>
-
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-
-
-<!-- ================= STATS ================= -->
-
-<section class="developer-stats reveal" id="stats">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      Developer Stats
-    </h2>
-
-    <div class="stats-grid">
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <i class="fas fa-code"></i>
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="max-width">
+      <h2 class="title">About Me</h2>
+      <div class="about-content">
+        <div class="column left-1">
+          <img src="Image/Photo.jpg" alt="Jayesh Borole">
         </div>
-
-        <h3 class="counter" data-target="3">
-          0
-        </h3>
-
-        <p>Years Experience</p>
-      </div>
-
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <i class="fas fa-project-diagram"></i>
-        </div>
-
-        <h3 class="counter" data-target="6">
-          0
-        </h3>
-
-        <p>Projects</p>
-      </div>
-
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <i class="fas fa-layer-group"></i>
-        </div>
-
-        <h3 class="counter" data-target="20">
-          0
-        </h3>
-
-        <p>Technologies</p>
-      </div>
-
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <i class="fas fa-server"></i>
-        </div>
-
-        <h3 class="counter" data-target="10">
-          0
-        </h3>
-
-        <p>APIs & Services</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= SERVICES ================= -->
-
-<section class="services reveal" id="services">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      My Services
-    </h2>
-
-    <div class="serv-content">
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-laptop-code"></i>
-        </div>
-
-        <h3>Web Development</h3>
-
-        <p>
-          Dynamic and responsive web applications using
-          modern frontend and backend technologies.
-        </p>
-      </div>
-
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-server"></i>
-        </div>
-
-        <h3>Backend Development</h3>
-
-        <p>
-          Server-side logic, database interactions and
-          REST APIs using Java and Spring Boot.
-        </p>
-      </div>
-
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-headset"></i>
-        </div>
-
-        <h3>Software Support</h3>
-
-        <p>
-          Application monitoring, troubleshooting,
-          incident handling and production support.
-        </p>
-      </div>
-
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-gears"></i>
-        </div>
-
-        <h3>Technical Consulting</h3>
-
-        <p>
-          Practical guidance on software architecture,
-          integrations and development practices.
-        </p>
-      </div>
-
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-code-branch"></i>
-        </div>
-
-        <h3>Code Optimization</h3>
-
-        <p>
-          Code review, debugging and optimization for
-          maintainability and performance.
-        </p>
-      </div>
-
-
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-display"></i>
-        </div>
-
-        <h3>Frontend Development</h3>
-
-        <p>
-          Responsive and interactive interfaces using
-          Angular, TypeScript, HTML and CSS.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= SKILLS ================= -->
-
-<section class="skills reveal" id="skills">
-
-  <div class="skills-overlay"></div>
-
-  <div class="max-width">
-
-    <h2 class="title">
-      Skills & Abilities
-    </h2>
-
-
-    <div class="skill-categories">
-
-
-      <!-- Backend -->
-      <div class="skill-category">
-
-        <h3>
-          <i class="fas fa-code"></i>
-          Backend
-        </h3>
-
-        <div class="skills-grid">
-
-          <span>Core Java</span>
-          <span>Java</span>
-          <span>Spring Boot</span>
-          <span>Spring MVC</span>
-          <span>Hibernate</span>
-          <span>REST APIs</span>
-          <span>J2EE</span>
-          <span>C#</span>
-
-        </div>
-
-      </div>
-
-
-      <!-- Frontend -->
-      <div class="skill-category">
-
-        <h3>
-          <i class="fas fa-palette"></i>
-          Frontend
-        </h3>
-
-        <div class="skills-grid">
-
-          <span>Angular</span>
-          <span>TypeScript</span>
-          <span>JavaScript</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>Bootstrap</span>
-
-        </div>
-
-      </div>
-
-
-      <!-- Database -->
-      <div class="skill-category">
-
-        <h3>
-          <i class="fas fa-database"></i>
-          Database & Tools
-        </h3>
-
-        <div class="skills-grid">
-
-          <span>MySQL</span>
-          <span>SQL</span>
-          <span>GitHub</span>
-          <span>Eclipse</span>
-          <span>Testing</span>
-          <span>Agile</span>
-          <span>Scrum</span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= PROJECTS ================= -->
-
-<section class="projects reveal" id="projects">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      My Projects
-    </h2>
-
-    <div class="carousel owl-carousel">
-
-
-      <div class="project-card">
-
-        <img
-          src="Image/Coffee.jpg"
-          alt="Coffee Shop"
-        >
-
-        <h3>CoffeeShop</h3>
-
-        <p>
-          Coffee shop management application.
-        </p>
-
-        <button
-          class="project-details-btn"
-          data-project="coffee"
-        >
-          View Details
-        </button>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <img
-          src="Image/HeadPhone.jpg"
-          alt="Headphones"
-        >
-
-        <h3>Headphone Landing</h3>
-
-        <p>
-          Responsive product showcase and cart UI.
-        </p>
-
-        <button
-          class="project-details-btn"
-          data-project="headphone"
-        >
-          View Details
-        </button>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <img
-          src="Image/mr.vadewale.jpg"
-          alt="Patil VadaPav"
-        >
-
-        <h3>Patil VadaPav</h3>
-
-        <p>
-          Restaurant and food landing website.
-        </p>
-
-        <button
-          class="project-details-btn"
-          data-project="vadapav"
-        >
-          View Details
-        </button>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <img
-          src="Image/Online.jpg"
-          alt="Food Ordering"
-        >
-
-        <h3>Food Ordering System</h3>
-
-        <p>
-          Online food browsing and ordering system.
-        </p>
-
-        <button
-          class="project-details-btn"
-          data-project="food"
-        >
-          View Details
-        </button>
-
-      </div>
-
-
-      <div class="project-card featured-project">
-
-        <span class="featured-badge">
-          Featured
-        </span>
-
-        <img
-          src="Image/RoomExpenses.jpg"
-          alt="Room Expenses"
-        >
-
-        <h3>RoomExpenses</h3>
-
-        <p>
-          Shared expense management application.
-        </p>
-
-        <button
-          class="project-details-btn"
-          data-project="roomexpenses"
-        >
-          View Details
-        </button>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <img
-          src="Image/employee.jpg"
-          alt="Employee Management"
-        >
-
-        <h3>Employee</h3>
-
-        <p>
-          Employee records management system.
-        </p>
-
-        <button
-          class="project-details-btn"
-          data-project="employee"
-        >
-          View Details
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= EDUCATION ================= -->
-
-<section class="education reveal" id="education">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      My Education
-    </h2>
-
-    <p class="subtitle">
-      Education is not the learning of facts,
-      but the training of the mind to think.
-    </p>
-
-
-    <div class="education-container">
-
-
-      <div class="education-card">
-
-        <img
-          src="Image/bca_college.jpg"
-          alt="BCA College"
-        >
-
-        <div class="edu-details">
-
-          <span class="edu-year">
-            2021 - 2024
-          </span>
-
-          <h3>
-            Bachelor Of Computer Application
-          </h3>
-
+        <div class="column right-1">
+          <div class="text">I'm Jayesh Borole and I'm a <span class="typing-2"></span></div>
           <p>
-            KCES's Institute of Management & Research,
-            Jalgaon | NMU
+            I am a passionate software professional with a solid foundation in programming and problem-solving.
+            Currently working as a Support Engineer at Jio Haptik Private Limited, I focus on technical support,
+            application troubleshooting and seamless system operations. I have hands-on experience in Core Java,
+            Spring Boot, Hibernate and RESTful Web Services and work closely with development and product teams.
           </p>
-
-          <strong>
-            CGPA - 9.29
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="education-card">
-
-        <img
-          src="Image/hsc_school.jpg"
-          alt="HSC School"
-        >
-
-        <div class="edu-details">
-
-          <span class="edu-year">
-            2019 - 2021
-          </span>
-
-          <h3>
-            HSC Science | PCMB
-          </h3>
-
-          <p>
-            Nutan Madhyamik Vidyalaya Chinawal |
-            Maharashtra Board
-          </p>
-
-          <strong>
-            Percentage - 80%
-          </strong>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= EXPERIENCE ================= -->
-
-<section class="experience reveal" id="experience">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      Experience
-    </h2>
-
-    <div class="timeline">
-
-      <div class="timeline-card">
-
-        <div class="timeline-icon">
-          <i class="fas fa-briefcase"></i>
-        </div>
-
-        <span class="timeline-date">
-          Professional Experience
-        </span>
-
-        <h3>
-          Jio Haptik Private Limited
-        </h3>
-
-        <h4>
-          Support Engineer
-        </h4>
-
-        <p>
-          Technical support, application troubleshooting,
-          monitoring, SQL, REST APIs and collaboration
-          with development/product teams to ensure smooth
-          application operations.
-        </p>
-
-        <div class="experience-tags">
-
-          <span>Java</span>
-          <span>SQL</span>
-          <span>REST API</span>
-          <span>Application Support</span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= GITHUB ================= -->
-
-<section class="github-section reveal" id="github">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      GitHub Activity
-    </h2>
-
-    <div class="github-profile">
-
-      <img
-        src="https://github-readme-stats.vercel.app/api?username=jayeshborole333&show_icons=true&theme=tokyonight&hide_border=true"
-        alt="GitHub Statistics"
-      >
-
-      <img
-        src="https://github-readme-stats.vercel.app/api/top-langs/?username=jayeshborole333&layout=compact&theme=tokyonight&hide_border=true"
-        alt="Top Programming Languages"
-      >
-
-    </div>
-
-    <a
-      class="github-main-btn"
-      href="https://github.com/jayeshborole333"
-      target="_blank"
-      rel="noopener"
-    >
-      <i class="fab fa-github"></i>
-      Visit My GitHub
-    </a>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact reveal" id="contact">
-
-  <div class="max-width">
-
-    <h2 class="title">
-      Get In Touch
-    </h2>
-
-
-    <div class="contact-content">
-
-      <div class="contact-left">
-
-        <div class="contact-info-card">
-
-          <span class="contact-small-title">
-            HAVE A PROJECT IN MIND?
-          </span>
-
-          <h3>
-            Let's work together.
-          </h3>
-
-          <p>
-            Feel free to contact me for job opportunities,
-            projects, collaborations or technical discussions.
-          </p>
-
-          <div class="contact-mini-info">
-
-            <div>
-              <i class="fas fa-envelope"></i>
-              <span>jayeshborole210@gmail.com</span>
-            </div>
-
-            <div>
-              <i class="fas fa-phone"></i>
-              <span>+91 9270279307</span>
-            </div>
-
+          <div class="about-details">
+            <p><strong>Age:</strong> 23</p>
+            <p><strong>Email:</strong> <a href="mailto:jayeshborole210@gmail.com">jayeshborole210@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919270279307">+91 9270279307</a></p>
+            <p><strong>Location:</strong> Maharashtra, India</p>
           </div>
-
+          <button id="resume-preview-btn-2" class="download-btn"><i class="fas fa-file-pdf"></i> View CV</button>
         </div>
-
-        <img
-          src="Image/Contact.jpg"
-          alt="Contact Jayesh"
-          class="contact-img"
-        >
-
       </div>
+    </div>
+  </section>
 
-
-      <div class="contact-right">
-
-        <form
-          id="contact-form"
-          action="https://api.web3forms.com/submit"
-          method="POST"
-        >
-
-          <input
-            type="hidden"
-            name="access_key"
-            value="bd2e8f23-b382-4dc8-a07e-5519037db63a"
-          >
-
-          <input
-            type="hidden"
-            name="subject"
-            value="New Portfolio Contact"
-          >
-
-          <input
-            type="checkbox"
-            name="botcheck"
-            class="hidden-botcheck"
-            tabindex="-1"
-            autocomplete="off"
-          >
-
-
-          <div class="form-row">
-
-            <div class="form-group">
-              <label>Name</label>
-
-              <input
-                type="text"
-                name="name"
-                placeholder="Your name"
-                required
-              >
-            </div>
-
-
-            <div class="form-group">
-              <label>Email</label>
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Your email"
-                required
-              >
-            </div>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>Phone</label>
-
-            <input
-              type="text"
-              name="phone"
-              placeholder="Your phone"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>Message</label>
-
-            <textarea
-              name="message"
-              placeholder="Write your message..."
-              required
-            ></textarea>
-
-          </div>
-
-
-          <button
-            type="submit"
-            class="contact-submit"
-          >
-            Send Message
-            <i class="fas fa-paper-plane"></i>
-          </button>
-
-          <div id="form-status"></div>
-
-        </form>
-
+  <!-- STATS -->
+  <section class="developer-stats" id="stats">
+    <div class="max-width">
+      <h2 class="title">Developer Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-card"><i class="fas fa-code"></i><h3 class="counter" data-target="3">0</h3><p>Years Experience</p></div>
+        <div class="stat-card"><i class="fas fa-project-diagram"></i><h3 class="counter" data-target="6">0</h3><p>Projects</p></div>
+        <div class="stat-card"><i class="fas fa-layer-group"></i><h3 class="counter" data-target="20">0</h3><p>Technologies</p></div>
+        <div class="stat-card"><i class="fas fa-server"></i><h3 class="counter" data-target="10">0</h3><p>APIs & Services</p></div>
       </div>
-
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-  <div class="footer-grid max-width">
-
-
-    <div class="footer-about">
-
-      <h2>
-        Jayesh's Portfolio
-      </h2>
-
-      <p>
-        Thank you for visiting my personal portfolio.
-        Connect with me over social media or send me
-        a message.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h2>
-        Quick Links
-      </h2>
-
-      <div class="footer-links">
-
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="max-width">
+      <h2 class="title">My Services</h2>
+      <div class="serv-content">
+        <div class="service-card"><i class="fas fa-laptop-code"></i><h3>Web Development</h3><p>Dynamic and responsive web applications using modern frontend and backend technologies.</p></div>
+        <div class="service-card"><i class="fas fa-server"></i><h3>Backend Development</h3><p>Server-side logic, database interactions and REST APIs using Java and Spring Boot.</p></div>
+        <div class="service-card"><i class="fas fa-headset"></i><h3>Software Support</h3><p>Application monitoring, troubleshooting, incident handling and production support.</p></div>
+        <div class="service-card"><i class="fas fa-gears"></i><h3>Technical Consulting</h3><p>Practical guidance on software architecture, integrations and development practices.</p></div>
+        <div class="service-card"><i class="fas fa-code-branch"></i><h3>Code Optimization</h3><p>Code review, debugging and optimization for maintainability and performance.</p></div>
+        <div class="service-card"><i class="fas fa-display"></i><h3>Frontend Development</h3><p>Responsive and interactive interfaces using Angular, TypeScript, HTML and CSS.</p></div>
       </div>
-
     </div>
+  </section>
 
-
-    <div>
-
-      <h2>
-        Contact Info
-      </h2>
-
-      <p>
-        <i class="fas fa-phone"></i>
-        +91 9270279307
-      </p>
-
-      <p>
-        <i class="fas fa-envelope"></i>
-        jayeshborole210@gmail.com
-      </p>
-
-      <p>
-        <i class="fas fa-location-dot"></i>
-        Maharashtra, India
-      </p>
-
-
-      <div class="footer-social">
-
-        <a
-          href="https://github.com/jayeshborole333"
-          target="_blank"
-          rel="noopener"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/jayesh-borole-420711390/"
-          target="_blank"
-          rel="noopener"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
-
-        <a
-          href="https://www.instagram.com/jayesh_borole09/"
-          target="_blank"
-          rel="noopener"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-
-        <a href="mailto:jayeshborole210@gmail.com">
-          <i class="fas fa-envelope"></i>
-        </a>
-
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="max-width">
+      <h2 class="title">Skills & Abilities</h2>
+      <div class="skill-categories">
+        <div class="skill-category"><h3><i class="fas fa-code"></i> Backend</h3><div class="skills-grid">
+          <span>Core Java</span><span>Java</span><span>Spring Boot</span><span>Spring MVC</span><span>Hibernate</span><span>REST APIs</span><span>J2EE</span><span>C#</span>
+        </div></div>
+        <div class="skill-category"><h3><i class="fas fa-palette"></i> Frontend</h3><div class="skills-grid">
+          <span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Bootstrap</span>
+        </div></div>
+        <div class="skill-category"><h3><i class="fas fa-database"></i> Database & Tools</h3><div class="skills-grid">
+          <span>MySQL</span><span>SQL</span><span>GitHub</span><span>Eclipse</span><span>Testing</span><span>Agile</span><span>Scrum</span>
+        </div></div>
       </div>
-
     </div>
+  </section>
 
-  </div>
-
-
-  <div class="bottom">
-
-    Designed With
-    <span class="heart">❤️</span>
-    By
-    <span>Jayesh Borole</span>
-
-  </div>
-
-</footer>
-
-
-
-<!-- ================= CHATBOT ================= -->
-
-<div
-  id="chatbot-icon"
-  aria-label="Open chatbot"
-  role="button"
-  tabindex="0"
->
-  <i class="fas fa-robot"></i>
-  <span class="chat-pulse"></span>
-</div>
-
-
-<div id="chatbot-container">
-
-  <div id="chat-header">
-
-    <div class="chat-title">
-
-      <div class="chat-avatar">
-        <i class="fas fa-robot"></i>
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="max-width">
+      <h2 class="title">My Projects</h2>
+      <div class="carousel owl-carousel">
+        <div class="project-card"><img src="Image/Coffee.jpg" alt="Coffee Shop"><h3>CoffeeShop</h3><p>Coffee shop management application.</p><button class="project-details-btn" data-project="coffee">View Details</button></div>
+        <div class="project-card"><img src="Image/HeadPhone.jpg" alt="Headphones"><h3>Headphone Landing</h3><p>Responsive product showcase and cart UI.</p><button class="project-details-btn" data-project="headphone">View Details</button></div>
+        <div class="project-card"><img src="Image/mr.vadewale.jpg" alt="Patil VadaPav"><h3>Patil VadaPav</h3><p>Restaurant/food landing website.</p><button class="project-details-btn" data-project="vadapav">View Details</button></div>
+        <div class="project-card"><img src="Image/Online.jpg" alt="Food Ordering"><h3>Food Ordering System</h3><p>Online food browsing and ordering system.</p><button class="project-details-btn" data-project="food">View Details</button></div>
+        <div class="project-card featured-project"><span class="featured-badge">Featured</span><img src="Image/RoomExpenses.jpg" alt="Room Expenses"><h3>RoomExpenses</h3><p>Shared expense management application.</p><button class="project-details-btn" data-project="roomexpenses">View Details</button></div>
+        <div class="project-card"><img src="Image/employee.jpg" alt="Employee Management"><h3>Employee</h3><p>Employee records management system.</p><button class="project-details-btn" data-project="employee">View Details</button></div>
       </div>
+    </div>
+  </section>
 
-      <div>
-        <strong>Jayesh's AI</strong>
-        <small>
-          <span class="online-dot"></span>
-          Online
-        </small>
+  <!-- EDUCATION -->
+  <section class="education" id="education">
+    <div class="max-width">
+      <h2 class="title">My Education</h2>
+      <p class="subtitle">Education is not the learning of facts, but the training of the mind to think.</p>
+      <div class="education-container">
+        <div class="education-card"><img src="Image/bca_college.jpg" alt="BCA College"><div><h3>Bachelor Of Computer Application</h3><p>KCES's Institute of Management & Research, Jalgaon | NMU</p><strong>2021-2024 | CGPA - 9.29</strong></div></div>
+        <div class="education-card"><img src="Image/hsc_school.jpg" alt="HSC School"><div><h3>HSC Science | PCMB</h3><p>Nutan Madhyamik Vidyalaya Chinawal | Maharashtra Board</p><strong>2019-2021 | Percentage - 80%</strong></div></div>
       </div>
-
     </div>
+  </section>
 
-
-    <button
-      id="chat-close"
-      aria-label="Close chatbot"
-    >
-      &times;
-    </button>
-
-  </div>
-
-
-  <div id="chat-box"></div>
-
-
-  <div id="quick-btns">
-
-    <button data-msg="projects">
-      <i class="fas fa-folder"></i>
-      Projects
-    </button>
-
-    <button data-msg="skills">
-      <i class="fas fa-code"></i>
-      Skills
-    </button>
-
-    <button data-msg="experience">
-      <i class="fas fa-briefcase"></i>
-      Experience
-    </button>
-
-    <button data-msg="contact">
-      <i class="fas fa-envelope"></i>
-      Contact
-    </button>
-
-    <button data-msg="roomexpenses">
-      RoomExpenses
-    </button>
-
-  </div>
-
-
-  <div class="input-area">
-
-    <input
-      type="text"
-      id="user-input"
-      placeholder="Ask me something..."
-      autocomplete="off"
-    >
-
-    <button
-      id="send-btn"
-      aria-label="Send message"
-    >
-      <i class="fas fa-paper-plane"></i>
-    </button>
-
-  </div>
-
-</div>
-
-
-
-<!-- ================= PROJECT MODAL ================= -->
-
-<div
-  id="project-modal"
-  class="modal"
->
-
-  <div class="modal-content project-modal-content">
-
-    <button
-      class="modal-close"
-      id="close-project-modal"
-      aria-label="Close"
-    >
-      &times;
-    </button>
-
-
-    <img
-      id="modal-project-image"
-      src=""
-      alt="Project"
-    >
-
-
-    <span class="modal-label">
-      PROJECT
-    </span>
-
-
-    <h2 id="modal-project-title"></h2>
-
-
-    <p id="modal-project-description"></p>
-
-
-    <div
-      id="modal-project-tech"
-      class="project-tech"
-    ></div>
-
-
-    <div class="modal-buttons">
-
-      <a
-        id="modal-github"
-        class="modal-btn github-btn"
-        target="_blank"
-        rel="noopener"
-      >
-        <i class="fab fa-github"></i>
-        GitHub
-      </a>
-
-      <a
-        id="modal-live"
-        class="modal-btn live-btn"
-        target="_blank"
-        rel="noopener"
-      >
-        <i class="fas fa-external-link-alt"></i>
-        Live Demo
-      </a>
-
+  <!-- EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="max-width">
+      <h2 class="title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-card">
+          <span class="timeline-dot"></span>
+          <div class="timeline-date">Professional Experience</div>
+          <h3>Jio Haptik Private Limited</h3>
+          <h4>Support Engineer</h4>
+          <p>Technical support, application troubleshooting, monitoring, SQL, REST APIs and collaboration with development/product teams to ensure smooth application operations.</p>
+          <div class="experience-tags"><span>Java</span><span>SQL</span><span>REST API</span><span>Application Support</span></div>
+        </div>
+      </div>
     </div>
+  </section>
 
+  <!-- GITHUB -->
+  <section class="github-section">
+    <div class="max-width">
+      <h2 class="title">GitHub Activity</h2>
+      <div class="github-profile">
+        <img src="https://github-readme-stats.vercel.app/api?username=jayeshborole333&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jayeshborole333&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages">
+      </div>
+      <a class="github-main-btn" href="https://github.com/jayeshborole333" target="_blank"><i class="fab fa-github"></i> Visit My GitHub</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="max-width">
+      <h2 class="title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-left"><img src="Image/Contact.jpg" alt="Contact"></div>
+        <div class="contact-right">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="bd2e8f23-b382-4dc8-a07e-5519037db63a">
+            <input type="hidden" name="subject" value="New Portfolio Contact">
+            <input type="checkbox" name="botcheck" class="hidden-botcheck" tabindex="-1" autocomplete="off">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Phone" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+            <div id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid max-width">
+      <div><h2>Jayesh's Portfolio</h2><p>Thank you for visiting my personal portfolio. Connect with me over socials.</p></div>
+      <div><h2>Quick Links</h2><div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a></div></div>
+      <div><h2>Contact Info</h2><p><i class="fas fa-phone"></i> +91 9270279307</p><p><i class="fas fa-envelope"></i> jayeshborole210@gmail.com</p><p><i class="fas fa-location-dot"></i> Maharashtra, India</p>
+        <div class="footer-social"><a href="https://github.com/jayeshborole333" target="_blank"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/jayesh-borole-420711390/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="https://www.instagram.com/jayesh_borole09/" target="_blank"><i class="fab fa-instagram"></i></a><a href="mailto:jayeshborole210@gmail.com"><i class="fas fa-envelope"></i></a></div>
+      </div>
+    </div>
+    <div class="bottom">Designed With ❤️ By <span>Jayesh Borole</span></div>
+  </footer>
+
+  <!-- CHATBOT -->
+  <div id="chatbot-icon" aria-label="Open chatbot"><i class="fas fa-robot"></i><span class="chat-pulse"></span></div>
+  <div id="chatbot-container">
+    <div id="chat-header"><span><i class="fas fa-robot"></i> Ask Jayesh's AI</span><button id="chat-close">&times;</button></div>
+    <div id="chat-box"></div>
+    <div id="quick-btns">
+      <button data-msg="projects">Projects</button><button data-msg="skills">Skills</button><button data-msg="contact">Contact</button><button data-msg="roomexpenses">RoomExpenses</button>
+    </div>
+    <div class="input-area"><input type="text" id="user-input" placeholder="Ask something..."><button id="send-btn"><i class="fas fa-paper-plane"></i></button></div>
   </div>
 
-</div>
-
-
-
-<!-- ================= RESUME MODAL ================= -->
-
-<div
-  id="resume-modal"
-  class="modal"
->
-
-  <div class="modal-content resume-modal-content">
-
-    <button
-      class="modal-close"
-      id="close-resume-modal"
-      aria-label="Close"
-    >
-      &times;
-    </button>
-
-
-    <h2>
-      Jayesh Borole - Resume
-    </h2>
-
-
-    <iframe
-      src="https://drive.google.com/file/d/1X7P4Edspn-4NQbMCzHAH6RhYegWV5TIs/preview"
-      title="Jayesh Borole Resume"
-    ></iframe>
-
-
-    <a
-      href="https://drive.google.com/file/d/1X7P4Edspn-4NQbMCzHAH6RhYegWV5TIs/view"
-      target="_blank"
-      rel="noopener"
-      class="download-btn"
-    >
-      <i class="fas fa-download"></i>
-      Open / Download Resume
-    </a>
-
+  <!-- PROJECT MODAL -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content project-modal-content">
+      <button class="modal-close" id="close-project-modal">&times;</button>
+      <img id="modal-project-image" src="" alt="Project">
+      <span class="modal-label">PROJECT</span>
+      <h2 id="modal-project-title"></h2>
+      <p id="modal-project-description"></p>
+      <div id="modal-project-tech" class="project-tech"></div>
+      <div class="modal-buttons"><a id="modal-github" class="modal-btn github-btn" target="_blank"><i class="fab fa-github"></i> GitHub</a><a id="modal-live" class="modal-btn live-btn" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a></div>
+    </div>
   </div>
 
-</div>
+  <!-- RESUME MODAL -->
+  <div id="resume-modal" class="modal">
+    <div class="modal-content resume-modal-content">
+      <button class="modal-close" id="close-resume-modal">&times;</button>
+      <h2>Jayesh Borole - Resume</h2>
+      <iframe src="https://drive.google.com/file/d/1X7P4Edspn-4NQbMCzHAH6RhYegWV5TIs/preview" title="Resume"></iframe>
+      <a href="https://drive.google.com/file/d/1X7P4Edspn-4NQbMCzHAH6RhYegWV5TIs/view" target="_blank" class="download-btn"><i class="fas fa-download"></i> Open / Download Resume</a>
+    </div>
+  </div>
 
-
-
-<!-- ================= JS LIBRARIES ================= -->
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<script src="script.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
