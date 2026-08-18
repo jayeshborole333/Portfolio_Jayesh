@@ -501,9 +501,12 @@ section {
 .project-card {
     min-height: 420px;
     padding: 25px;
+
     background: #222;
     border-radius: 14px;
+
     text-align: center;
+
     transition: 0.3s ease;
 }
 
@@ -511,10 +514,6 @@ section {
     background: #1e3551;
     transform: translateY(-5px);
 }
-
-/* ==============================
-   PROJECT IMAGE - PERFECT CIRCLE
-============================== */
 
 .project-card img {
     width: 150px;
@@ -556,16 +555,29 @@ section {
 .project-details-btn {
     display: inline-block;
 
-    margin-top: 15px;
-    padding: 10px 17px;
+    margin-top: 12px;
+    padding: 10px 16px;
+
+    border: 0;
+    border-radius: 22px;
 
     background: #f5c84c;
     color: #111;
 
-    border-radius: 7px;
-
     font-weight: 600;
+
+    transition: 0.3s ease;
 }
+
+.project-details-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+
+/* =====================================================
+   OWL CAROUSEL
+===================================================== */
 
 .owl-dots {
     margin-top: 25px;
@@ -586,27 +598,6 @@ section {
     width: 30px !important;
     background: #f5c84c !important;
 }
-
-
-/* ==============================
-   MOBILE
-============================== */
-
-@media (max-width: 480px) {
-
-    .project-card img {
-        width: 125px;
-        height: 125px;
-
-        min-width: 125px;
-        min-height: 125px;
-
-        aspect-ratio: 1 / 1;
-
-        border-radius: 50% !important;
-    }
-}
-
 
 
 /* =====================================================
@@ -1170,6 +1161,318 @@ footer {
 
 
 /* =====================================================
+   NEW FEATURES
+===================================================== */
+
+.recruiter-snapshot {
+    padding: 45px 0;
+    background: linear-gradient(
+        135deg,
+        #111820,
+        #1e2b38
+    );
+}
+
+.snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.snapshot-card {
+    padding: 24px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(10px);
+
+    text-align: center;
+    color: #fff;
+
+    transform: translateY(20px);
+    opacity: 0;
+
+    transition: 0.6s;
+}
+
+.snapshot-card.reveal-show {
+    transform: none;
+    opacity: 1;
+}
+
+.snapshot-number {
+    display: block;
+
+    font-size: 34px;
+    font-weight: 800;
+
+    color: #f5c84c;
+}
+
+.snapshot-card span:last-child {
+    font-size: 14px;
+}
+
+.hire-banner {
+    margin-top: 25px;
+    padding: 25px 30px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(245, 200, 76, 0.15),
+        rgba(255, 255, 255, 0.07)
+    );
+
+    border: 1px solid rgba(245, 200, 76, 0.3);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #fff;
+
+    transform: translateY(20px);
+    opacity: 0;
+
+    transition: 0.6s;
+}
+
+.hire-banner.reveal-show {
+    transform: none;
+    opacity: 1;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #f5c84c;
+}
+
+.hire-banner h3 {
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+.hire-banner p {
+    opacity: 0.85;
+}
+
+.hire-btn,
+.modal-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    background: #f5c84c;
+    color: #111;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition: 0.3s ease;
+}
+
+.hire-btn:hover,
+.modal-link:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+
+/* =====================================================
+   PROJECT MODAL
+===================================================== */
+
+.project-modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    z-index: 10001;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.project-modal-content {
+    position: relative;
+
+    width: min(650px, 100%);
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background: #fff;
+    color: #222;
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+
+    animation: modalIn 0.25s ease;
+}
+
+.project-modal-content h2 {
+    font-size: 30px;
+    margin: 7px 0 12px;
+}
+
+.project-modal-content p {
+    line-height: 1.8;
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 18px;
+    top: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 0;
+    border-radius: 50%;
+
+    font-size: 25px;
+
+    background: rgba(128, 128, 128, 0.15);
+    color: #222;
+}
+
+.modal-tech {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 22px 0;
+}
+
+.modal-tech span {
+    padding: 7px 12px;
+
+    border-radius: 15px;
+
+    background: rgba(245, 200, 76, 0.18);
+
+    color: #222;
+
+    font-size: 13px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.modal-link {
+    background: #222;
+    color: #fff;
+}
+
+.modal-primary {
+    background: #f5c84c;
+    color: #111;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform: translate(-50%, 20px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 10003;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    background: #111820;
+    color: #fff;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+    transition: 0.3s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+
+/* =====================================================
+   CHAT ACTIONS
+===================================================== */
+
+.chat-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 5px 10px;
+}
+
+.chat-actions button {
+    border: 0;
+
+    background: transparent;
+    color: #888;
+
+    font-size: 11px;
+}
+
+.chat-actions button:hover {
+    color: #f5c84c;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes modalIn {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
    TABLET
 ===================================================== */
 
@@ -1223,6 +1526,23 @@ footer {
 
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =====================================================
+   TABLET / SMALL DESKTOP - NEW FEATURES
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .snapshot-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hire-banner {
+        align-items: flex-start;
+        flex-direction: column;
     }
 }
 
@@ -1358,16 +1678,53 @@ footer {
         left: 10px;
         right: 10px;
         bottom: 85px;
+
         width: auto;
         height: 470px;
     }
-
 }
 
 
 /* =====================================================
    SMALL MOBILE
 ===================================================== */
+
+@media (max-width: 520px) {
+
+    .snapshot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .snapshot-card {
+        padding: 18px 8px;
+    }
+
+    .snapshot-number {
+        font-size: 28px;
+    }
+
+    .hire-banner {
+        padding: 22px;
+    }
+
+    .hire-banner h3 {
+        font-size: 20px;
+    }
+
+    .project-modal-content {
+        padding: 28px 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-link {
+        justify-content: center;
+    }
+}
+
 
 @media (max-width: 480px) {
 
@@ -1438,6 +1795,7 @@ footer {
     #chatbot-icon {
         right: 12px;
         bottom: 15px;
+
         width: 56px;
         height: 56px;
     }
@@ -1459,13 +1817,3 @@ textarea:focus-visible {
     outline: 2px solid #f5c84c;
     outline-offset: 3px;
 }
-
-/* =====================================================
-   JAYESH PORTFOLIO - NEW FEATURES
-===================================================== */
-.theme-toggle{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;width:42px;height:42px;border-radius:50%;font-size:18px;margin-left:12px;transition:.25s}.theme-toggle:hover{transform:translateY(-2px);background:rgba(255,255,255,.16)}
-body.dark-mode{background:#0b1118;color:#eaf0f6}body.dark-mode section,body.dark-mode .project-card,body.dark-mode .education-card,body.dark-mode .experience-card,body.dark-mode .services .card{background-color:#111b26;color:#eaf0f6}body.dark-mode .about .text,body.dark-mode .contact-right,body.dark-mode .skill,body.dark-mode .footer{color:#eaf0f6}
-.recruiter-snapshot{padding:45px 0;background:linear-gradient(135deg,#111820,#1e2b38)}.snapshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.snapshot-card{padding:24px 18px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);text-align:center;color:#fff;transform:translateY(20px);opacity:0;transition:.6s}.snapshot-card.reveal-show{transform:none;opacity:1}.snapshot-number{display:block;font-size:34px;font-weight:800;color:#f5c84c}.snapshot-card span:last-child{font-size:14px}.hire-banner{margin-top:25px;padding:25px 30px;border-radius:20px;background:linear-gradient(135deg,rgba(245,200,76,.15),rgba(255,255,255,.07));border:1px solid rgba(245,200,76,.3);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff;transform:translateY(20px);opacity:0;transition:.6s}.hire-banner.reveal-show{transform:none;opacity:1}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;color:#f5c84c}.hire-banner h3{font-size:25px;margin:5px 0}.hire-banner p{opacity:.85}.hire-btn,.modal-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:30px;background:#f5c84c;color:#111;font-weight:700;white-space:nowrap}.project-details-btn{border:0;padding:10px 16px;border-radius:22px;background:#f5c84c;color:#111;font-weight:600;margin-top:12px}.project-details-btn:hover,.hire-btn:hover,.modal-link:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.project-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:10001;align-items:center;justify-content:center;padding:20px}.project-modal-content{position:relative;width:min(650px,100%);padding:35px;border-radius:24px;background:#fff;color:#222;box-shadow:0 25px 80px rgba(0,0,0,.4);animation:modalIn .25s ease}.dark-mode .project-modal-content{background:#111b26;color:#eef5fb}.project-modal-content h2{font-size:30px;margin:7px 0 12px}.project-modal-content p{line-height:1.8}.modal-close{position:absolute;right:18px;top:15px;width:38px;height:38px;border:0;border-radius:50%;font-size:25px;background:rgba(128,128,128,.15);color:inherit}.modal-tech{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}.modal-tech span{padding:7px 12px;border-radius:15px;background:rgba(245,200,76,.18);color:inherit;font-size:13px}.modal-actions{display:flex;gap:12px;flex-wrap:wrap}.modal-link{background:#222;color:#fff}.modal-primary{background:#f5c84c;color:#111}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:10003;padding:13px 20px;border-radius:12px;background:#111820;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}.chat-actions{display:flex;justify-content:flex-end;padding:5px 10px}.chat-actions button{border:0;background:transparent;color:#888;font-size:11px}.chat-actions button:hover{color:#f5c84c}@keyframes modalIn{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
-@media(max-width:900px){.snapshot-grid{grid-template-columns:repeat(2,1fr)}.hire-banner{align-items:flex-start;flex-direction:column}.theme-toggle{margin-left:auto;margin-right:10px}}
-@media(max-width:520px){.snapshot-grid{grid-template-columns:1fr 1fr;gap:10px}.snapshot-card{padding:18px 8px}.snapshot-number{font-size:28px}.hire-banner{padding:22px}.hire-banner h3{font-size:20px}.project-modal-content{padding:28px 20px}.modal-actions{flex-direction:column}.modal-link{justify-content:center}}
