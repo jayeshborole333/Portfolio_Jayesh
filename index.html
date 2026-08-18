@@ -94,6 +94,8 @@
             </li>
         </ul>
 
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+
         <button
             class="menu-toggle"
             type="button"
@@ -192,6 +194,28 @@
 
     </div>
 
+</section>
+
+<!-- =====================================================
+     RECRUITER SNAPSHOT
+===================================================== -->
+<section class="recruiter-snapshot" id="snapshot">
+    <div class="max-width">
+        <div class="snapshot-grid">
+            <div class="snapshot-card"><span class="snapshot-number">3+</span><span>Years Experience</span></div>
+            <div class="snapshot-card"><span class="snapshot-number">2+</span><span>Years L2 Support</span></div>
+            <div class="snapshot-card"><span class="snapshot-number">1+</span><span>Year Development</span></div>
+            <div class="snapshot-card"><span class="snapshot-number">9.29</span><span>BCA CGPA</span></div>
+        </div>
+        <div class="hire-banner">
+            <div>
+                <span class="eyebrow">OPEN TO OPPORTUNITIES</span>
+                <h3>Java Developer / Application Support Engineer</h3>
+                <p>Java • Spring Boot • REST APIs • SQL • Angular • Production Support</p>
+            </div>
+            <a href="#contact" class="hire-btn">Let's Connect <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
 </section>
 
 
@@ -506,14 +530,7 @@
                     coffee shop operations and customer orders.
                 </p>
 
-                <a
-                    href="https://github.com/jayeshborole333/Cofee_Shop_Management"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="project-details-btn"
-                >
-                    View Project
-                </a>
+                <button type="button" class="project-details-btn" data-project="coffee">View Details</button>
 
             </div>
 
@@ -536,6 +553,8 @@
                     product showcase and shopping interface.
                 </p>
 
+                <button type="button" class="project-details-btn" data-project="headphone">View Details</button>
+
             </div>
 
 
@@ -556,6 +575,8 @@
                     Food business website showcasing products,
                     menu items and business information.
                 </p>
+
+                <button type="button" class="project-details-btn" data-project="vadapav">View Details</button>
 
             </div>
 
@@ -578,6 +599,8 @@
                     to browse, select and order meals.
                 </p>
 
+                <button type="button" class="project-details-btn" data-project="food">View Details</button>
+
             </div>
 
 
@@ -598,6 +621,8 @@
                     Application for tracking, managing and
                     organizing shared room expenses.
                 </p>
+
+                <button type="button" class="project-details-btn" data-project="room">View Details</button>
 
             </div>
 
@@ -620,6 +645,8 @@
                     employee records and payroll information.
                 </p>
 
+                <button type="button" class="project-details-btn" data-project="employee">View Details</button>
+
             </div>
 
         </div>
@@ -627,6 +654,23 @@
     </div>
 
 </section>
+
+<!-- =====================================================
+     PROJECT DETAILS MODAL
+===================================================== -->
+<div id="project-modal" class="project-modal" aria-hidden="true">
+    <div class="project-modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+        <button id="close-project-modal" class="modal-close" type="button" aria-label="Close">&times;</button>
+        <span class="eyebrow">PROJECT DETAILS</span>
+        <h2 id="modal-project-title"></h2>
+        <p id="modal-project-description"></p>
+        <div id="modal-project-tech" class="modal-tech"></div>
+        <div class="modal-actions">
+            <a id="modal-project-github" href="#" target="_blank" rel="noopener noreferrer" class="modal-link">GitHub <i class="fa-brands fa-github"></i></a>
+            <a href="#contact" class="modal-link modal-primary">Discuss Project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
 
 
 <!-- =====================================================
@@ -1015,6 +1059,8 @@
     </div>
 
 
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
     <!-- Chatbot Icon -->
 
     <button
@@ -1067,8 +1113,20 @@
                 Contact
             </button>
 
+            <button type="button" data-message="resume">
+                Resume
+            </button>
+
+            <button type="button" data-message="java skills">
+                Java
+            </button>
+
         </div>
 
+
+        <div class="chat-actions">
+            <button type="button" id="clear-chat">Clear Chat</button>
+        </div>
 
         <div class="input-area">
 
