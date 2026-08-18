@@ -500,14 +500,10 @@ section {
 
 .project-card {
     min-height: 420px;
-
     padding: 25px;
-
     background: #222;
     border-radius: 14px;
-
     text-align: center;
-
     transition: 0.3s ease;
 }
 
@@ -516,16 +512,26 @@ section {
     transform: translateY(-5px);
 }
 
+/* ==============================
+   PROJECT IMAGE - PERFECT CIRCLE
+============================== */
+
 .project-card img {
     width: 150px;
     height: 150px;
 
-    margin: auto;
+    display: block;
+    margin: 0 auto;
 
     object-fit: cover;
+    object-position: center;
 
-    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+
+    border-radius: 50% !important;
     border: 5px solid #888;
+
+    overflow: hidden;
 
     transition: 0.3s ease;
 }
@@ -580,6 +586,27 @@ section {
     width: 30px !important;
     background: #f5c84c !important;
 }
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 480px) {
+
+    .project-card img {
+        width: 125px;
+        height: 125px;
+
+        min-width: 125px;
+        min-height: 125px;
+
+        aspect-ratio: 1 / 1;
+
+        border-radius: 50% !important;
+    }
+}
+
 
 
 /* =====================================================
