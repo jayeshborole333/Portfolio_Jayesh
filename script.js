@@ -10,7 +10,7 @@ $(document).ready(function () {
   const toast = document.getElementById("toast");
 
   // Theme
-  const savedTheme = localStorage.getItem("portfolioTheme");
+/*  const savedTheme = localStorage.getItem("portfolioTheme");
   if (savedTheme === "dark") body.classList.add("dark-mode");
   updateThemeIcon();
   themeBtn?.addEventListener("click", () => {
@@ -20,7 +20,7 @@ $(document).ready(function () {
   });
   function updateThemeIcon() {
     if (themeBtn) themeBtn.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
-  }
+  } */
 
   // Navbar / scroll
   $(window).on("scroll", function () {
