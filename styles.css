@@ -494,9 +494,18 @@ section {
    PROJECTS
 ===================================================== */
 
+/* =====================================================
+   PROJECT CAROUSEL
+===================================================== */
+
 .project-carousel {
     width: 100%;
 }
+
+
+/* =====================================================
+   PROJECT CARD
+===================================================== */
 
 .project-card {
     min-height: 420px;
@@ -515,42 +524,96 @@ section {
     transform: translateY(-5px);
 }
 
-.project-card img {
+
+/* =====================================================
+   PROJECT IMAGE WRAPPER
+===================================================== */
+
+.project-image {
     width: 150px;
     height: 150px;
 
-    display: block;
-    margin: 0 auto;
+    margin: 0 auto 15px;
 
-    object-fit: cover;
-    object-position: center;
-
-    aspect-ratio: 1 / 1;
-
-    border-radius: 50% !important;
-    border: 5px solid #888;
+    border-radius: 50%;
 
     overflow: hidden;
+
+    border: 5px solid #888;
+
+    background: #fff;
 
     transition: 0.3s ease;
 }
 
-.project-card:hover img {
+
+/* =====================================================
+   IMAGE INSIDE WRAPPER
+===================================================== */
+
+.project-image img {
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    aspect-ratio: 1 / 1;
+
+    transition: 0.3s ease;
+}
+
+
+/* =====================================================
+   IMAGE HOVER
+===================================================== */
+
+.project-card:hover .project-image {
     border-color: #fff;
+
     transform: scale(1.05);
 }
+
+
+/* =====================================================
+   PROJECT TITLE
+===================================================== */
 
 .project-card .text {
     font-size: 23px;
     font-weight: 600;
+
     margin: 15px 0 8px;
 }
 
+
+/* =====================================================
+   PROJECT DESCRIPTION
+===================================================== */
+
 .project-card p {
     min-height: 75px;
+
     color: #ccc;
+
     font-size: 14px;
+    line-height: 1.6;
 }
+
+
+/* =====================================================
+   PROJECT BUTTON
+===================================================== */
 
 .project-details-btn {
     display: inline-block;
@@ -576,7 +639,7 @@ section {
 
 
 /* =====================================================
-   OWL CAROUSEL
+   OWL CAROUSEL DOTS
 ===================================================== */
 
 .owl-dots {
@@ -591,14 +654,69 @@ section {
 .owl-dot span {
     width: 12px !important;
     height: 12px !important;
+
     background: #888 !important;
+
+    border-radius: 50% !important;
 }
 
 .owl-dot.active span {
     width: 30px !important;
+
     background: #f5c84c !important;
+
+    border-radius: 10px !important;
 }
 
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .project-card {
+        min-height: 390px;
+        padding: 20px 15px;
+    }
+
+    .project-image {
+        width: 125px;
+        height: 125px;
+
+        border-width: 4px;
+    }
+
+    .project-image img {
+        width: 100% !important;
+        height: 100% !important;
+
+        object-fit: cover !important;
+
+        border-radius: 50% !important;
+    }
+
+    .project-card .text {
+        font-size: 20px;
+    }
+
+    .project-card p {
+        font-size: 13px;
+    }
+}
+
+
+/* =====================================================
+   EXTRA SMALL MOBILE
+===================================================== */
+
+@media (max-width: 360px) {
+
+    .project-image {
+        width: 110px;
+        height: 110px;
+    }
+}
 
 /* =====================================================
    EDUCATION
